@@ -4,7 +4,17 @@ All notable changes to the MadrasaPulse project will be documented in this file.
 
 ---
 
-## [1.1.0] - 2026-07-19 (Commit: 8d18e17)
+## [1.2.0] - 2026-07-19 (Commit: f0439eb)
+
+### Added
+*   **[Core Database Models]** Coded core Mongoose schemas for `Madrasa` (tenant configuration), `Student` (life-cycle profile and sibling indicators), and `Teacher` (expertise allocations and leave logs).
+*   **[Capped Attendance Bucketing]** Implemented space-optimized Mongoose schema for `Attendance` buckets, grouping logs monthly to prevent 16MB document size ceiling overflows.
+*   **[Production Dockerfile]** Wrote a multi-stage production Docker build script for backend Express.js server optimization.
+*   **[Local Dev Orchestration]** Configured `docker-compose.yml` linking the Express REST service to a local MongoDB volume container.
+
+---
+
+## [1.1.0] - 2026-07-19 (Commit: 4397704)
 
 ### Added
 *   **[JWT Authentication Service]** Developed full token validation engine including Access Token generation (15m) and Refresh Token rotation (30d) logic.
