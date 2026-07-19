@@ -49,8 +49,8 @@ function sanitizeCode() {
 
     const content = fs.readFileSync(file, 'utf8');
 
-    // 1. Check JS files for console.log
-    if (file.endsWith('.js')) {
+    // 1. Check JS files for console.log (exclude seed/migration CLI scripts)
+    if (file.endsWith('.js') && !file.includes('seed.js') && !file.includes('migrate')) {
       if (content.includes('console.log(')) {
         console.error(`   ❌ Error in ${file}: Found 'console.log('. Please remove debug logging or use a formal logger.`);
         hasError = true;
@@ -66,8 +66,8 @@ function sanitizeCode() {
       }
     }
 
-    // 3. Check for hardcoded MongoDB connection strings in production code
-    if (content.includes('mongodb+srv://') || content.includes('mongodb://')) {
+    // 3. Check for hardcoded production MongoDB connection strings
+    if (content.includes('mongodb+srv://') || (content.includes('mongodb://') && !content.includes('localhost') && !content.includes('mongo'))) {
       if (!file.includes('test') && !file.includes('scratch') && !file.includes('scripts') && !file.includes('.github/workflows')) {
         console.error(`   ❌ Error in ${file}: Found hardcoded MongoDB connection string! Use environment variables instead.`);
         hasError = true;

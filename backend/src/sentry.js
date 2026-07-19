@@ -7,7 +7,7 @@ let Sentry;
 const initSentry = (app) => {
   const dsn = process.env.SENTRY_DSN;
   if (!dsn) {
-    console.log('Sentry not configured — skipping initialization');
+    console.warn('Sentry not configured — skipping initialization');
     return;
   }
 

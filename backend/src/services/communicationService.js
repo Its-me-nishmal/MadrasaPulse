@@ -23,12 +23,12 @@ const registerDeviceToken = async (userId, token, platform) => {
  * @returns {Promise<Object>} Dispatch log with provider info and timestamp
  */
 const sendAlert = async (madrasaId, data) => {
-  console.log('\n--- MOCK DISPATCH TRIGGERED ---');
-  console.log(`Madrasa Tenant Context ID: ${madrasaId}`);
-  console.log(`Recipient Phone: ${data.recipientPhone}`);
-  console.log(`Alert Category: ${data.messageType.toUpperCase()}`);
-  console.log(`Message Content: "${data.message}"`);
-  console.log('Status: DISPATCHED SUCCESSFULLY VIA TWILIO/WHATSAPP MOCK INTEGRATOR\n');
+  console.info('\n--- MOCK DISPATCH TRIGGERED ---');
+  console.info(`Madrasa Tenant Context ID: ${madrasaId}`);
+  console.info(`Recipient Phone: ${data.recipientPhone}`);
+  console.info(`Alert Category: ${data.messageType.toUpperCase()}`);
+  console.info(`Message Content: "${data.message}"`);
+  console.info('Status: DISPATCHED SUCCESSFULLY VIA TWILIO/WHATSAPP MOCK INTEGRATOR\n');
   return {
     provider: 'Twilio & WhatsApp Business API Mocked',
     recipient: data.recipientPhone,

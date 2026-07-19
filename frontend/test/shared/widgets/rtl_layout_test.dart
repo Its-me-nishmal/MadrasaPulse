@@ -5,10 +5,10 @@ void main() {
   testWidgets('Directionality widget sets RTL correctly',
       (WidgetTester tester) async {
     await tester.pumpWidget(
-      MaterialApp(
+      const MaterialApp(
         home: Directionality(
           textDirection: TextDirection.rtl,
-          child: const Text('السلام عليكم'),
+          child: Text('السلام عليكم'),
         ),
       ),
     );
@@ -21,10 +21,10 @@ void main() {
   testWidgets('Directionality widget sets LTR correctly',
       (WidgetTester tester) async {
     await tester.pumpWidget(
-      MaterialApp(
+      const MaterialApp(
         home: Directionality(
           textDirection: TextDirection.ltr,
-          child: const Text('Hello'),
+          child: Text('Hello'),
         ),
       ),
     );

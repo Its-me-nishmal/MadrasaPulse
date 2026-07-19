@@ -98,7 +98,7 @@ void main() {
     });
 
     test('copyWith creates modified copy', () {
-      final guardian = Guardian(
+      const guardian = Guardian(
         name: 'Parent',
         relationship: 'Father',
         phone: '9876543210',
