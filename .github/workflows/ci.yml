@@ -30,6 +30,9 @@ jobs:
       - name: Install Monorepo Dependencies
         run: npm ci
 
+      - name: Code Sanitization Check (Verify prints/console.logs)
+        run: node scripts/sanitize_code.js
+
       - name: Verify API Alignment (Frontend vs Backend)
         run: node scripts/verify_api_alignment.js
 
