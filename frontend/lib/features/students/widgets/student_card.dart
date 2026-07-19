@@ -10,11 +10,15 @@ class StudentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fChar = student.firstName.trim().isNotEmpty ? student.firstName.trim()[0].toUpperCase() : '';
+    final lChar = student.lastName.trim().isNotEmpty ? student.lastName.trim()[0].toUpperCase() : '';
+    final initials = (fChar + lChar).isNotEmpty ? (fChar + lChar) : '?';
+
     return Card(
       margin: const EdgeInsets.symmetric(vertical: AppSpacing.xs),
       child: ListTile(
         leading: CircleAvatar(
-          child: Text('${student.firstName[0]}${student.lastName[0]}'),
+          child: Text(initials),
         ),
         title: Text('${student.firstName} ${student.lastName}'),
         subtitle: Text('Adm: ${student.admissionNo}'),

@@ -29,13 +29,17 @@ class TeacherDetailScreen extends ConsumerWidget {
 
   Widget _buildContent(BuildContext context, TeacherDetailState state) {
     final t = state.teacher!;
+    final fChar = t.firstName.trim().isNotEmpty ? t.firstName.trim()[0].toUpperCase() : '';
+    final lChar = t.lastName.trim().isNotEmpty ? t.lastName.trim()[0].toUpperCase() : '';
+    final initials = (fChar + lChar).isNotEmpty ? (fChar + lChar) : '?';
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(AppSpacing.md),
       child: Column(
         children: [
           CircleAvatar(
               radius: 40,
-              child: Text('${t.firstName[0]}${t.lastName[0]}',
+              child: Text(initials,
                   style: const TextStyle(fontSize: 24),
                   ),
               ),

@@ -65,6 +65,10 @@ class StudentDetailScreen extends ConsumerWidget {
     final student = state.student!;
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
+    final fChar = student.firstName.trim().isNotEmpty ? student.firstName.trim()[0].toUpperCase() : '';
+    final lChar = student.lastName.trim().isNotEmpty ? student.lastName.trim()[0].toUpperCase() : '';
+    final initials = (fChar + lChar).isNotEmpty ? (fChar + lChar) : '?';
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(AppSpacing.md),
       child: Column(
@@ -92,7 +96,7 @@ class StudentDetailScreen extends ConsumerWidget {
                     radius: 40,
                     backgroundColor: Colors.white,
                     child: Text(
-                      '${student.firstName[0]}${student.lastName[0]}',
+                      initials,
                       style: const TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,

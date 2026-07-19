@@ -65,10 +65,14 @@ class _TeacherListScreenState extends ConsumerState<TeacherListScreen> {
         padding: const EdgeInsets.all(AppSpacing.sm),
         itemBuilder: (ctx, i) {
           final t = state.teachers[i];
+          final fChar = t.firstName.trim().isNotEmpty ? t.firstName.trim()[0].toUpperCase() : '';
+          final lChar = t.lastName.trim().isNotEmpty ? t.lastName.trim()[0].toUpperCase() : '';
+          final initials = (fChar + lChar).isNotEmpty ? (fChar + lChar) : '?';
+
           return Card(
             margin: const EdgeInsets.symmetric(vertical: 4),
             child: ListTile(
-              leading: CircleAvatar(child: Text('${t.firstName[0]}${t.lastName[0]}')),
+              leading: CircleAvatar(child: Text(initials)),
               title: Text('${t.firstName} ${t.lastName}'),
               subtitle: Text('Staff ID: ${t.staffId}'),
               trailing: const Icon(Icons.chevron_right),
