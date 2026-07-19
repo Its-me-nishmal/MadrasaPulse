@@ -36,6 +36,9 @@ jobs:
       - name: Verify API Alignment (Frontend vs Backend)
         run: node scripts/verify_api_alignment.js
 
+      - name: Verify Active Controller Data Connections
+        run: node scripts/verify_controller_connections.js
+
       - name: Run Backend Integration Tests
         run: npm test --workspace=backend
         env:
