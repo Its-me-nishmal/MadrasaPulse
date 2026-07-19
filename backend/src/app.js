@@ -41,6 +41,10 @@ app.use('/api/v1/fees', feeRoutes);
 const examRoutes = require('./routes/examRoutes');
 app.use('/api/v1/exams', examRoutes);
 
+// Communication Routes registration
+const communicationRoutes = require('./routes/communicationRoutes');
+app.use('/api/v1/communication', communicationRoutes);
+
 // Global Error Handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
