@@ -20,29 +20,54 @@ class QuickActionGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Wrap(
       spacing: AppSpacing.sm,
       runSpacing: AppSpacing.sm,
       children: _actions.map((a) {
         return SizedBox(
           width: (MediaQuery.of(context).size.width - 48) / 3,
-          child: Card(
-            child: InkWell(
-              borderRadius:
-                  BorderRadius.circular(AppSpacing.borderRadiusMedium),
-              onTap: () => context.push(a.route),
-              child: Padding(
-                padding: const EdgeInsets.all(AppSpacing.md),
-                child: Column(
-                  children: [
-                    Icon(a.icon, color: a.color, size: 28),
-                    const SizedBox(height: AppSpacing.xs),
-                    Text(
-                      a.label,
-                      style: const TextStyle(fontSize: 12),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+          child: Container(
+            decoration: BoxDecoration(
+              color: isDark ? AppColors.darkSurface : Colors.white,
+              borderRadius: BorderRadius.circular(AppSpacing.borderRadiusMedium),
+              border: Border.all(
+                color: isDark ? AppColors.darkBorder : AppColors.border,
+                width: 0.8,
+              ),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(AppSpacing.borderRadiusMedium),
+              child: InkWell(
+                onTap: () => context.push(a.route),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: AppSpacing.md, horizontal: AppSpacing.xs),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: a.color.withOpacity(0.1),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(a.icon, color: a.color, size: 24),
+                      ),
+                      const SizedBox(height: AppSpacing.sm),
+                      Text(
+                        a.label,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: isDark ? AppColors.darkTextPrimary : AppColors.textPrimary,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
