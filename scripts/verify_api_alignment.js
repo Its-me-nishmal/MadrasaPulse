@@ -86,12 +86,19 @@ function verifyAlignment() {
   backendRoutes.forEach(r => console.log(`   💻 ${r}`));
 
   // 3. Compare Flutter routes with backend routes
-  console.log('\n⚖️  Checking for mismatches...');
+  console.log('\n⚖️  Checking for mismatches (Strict Two-Way Alignment)...');
   let hasMismatch = false;
 
   flutterRoutes.forEach(route => {
     if (!backendRoutes.has(route)) {
       console.error(`❌ Mismatch: Flutter calls '${route}', but this endpoint is NOT registered in the Express backend!`);
+      hasMismatch = true;
+    }
+  });
+
+  backendRoutes.forEach(route => {
+    if (!flutterRoutes.has(route)) {
+      console.error(`❌ Mismatch: Backend registers '${route}', but this endpoint is NOT defined in Flutter's ApiConfig!`);
       hasMismatch = true;
     }
   });

@@ -20,4 +20,7 @@ class ApiConfig {
   static const String feesPayment = '/fees/pay';
   static const String examsRecords = '/exams';
   static String examsReportCard(String studentId) => '/exams/report/$studentId';
+  static const String authMe = '/auth/me';
+  static const String deviceToken = '/communication/device-token';
+  static const String sendAlert = '/communication/send-alert';
 }
