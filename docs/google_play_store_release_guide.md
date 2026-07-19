@@ -68,3 +68,43 @@ The output file will be generated at:
 4. Navigate to **Production** under the Release section.
 5. Create a new release, and upload the generated `app-release.aab` bundle.
 6. Submit the release for review!
+
+---
+
+## 🤖 Direct CD Upload Automation (Fastlane & GitHub Actions)
+
+To manage and upload builds **directly** to Google Play and Apple App Store without opening your browser:
+
+### 1. Fastlane CLI Integration (Local Deployments)
+Fastlane is the industry standard for mobile deployment automation:
+1.  Install Fastlane locally: `gem install fastlane`
+2.  Initialize inside the Android directory:
+    ```bash
+    cd frontend/android
+    fastlane init
+    ```
+    *Provide your package name (`com.itsmenishmal.madrasapulse`) and the path to your Google Play Service Account JSON key.*
+3.  Deploy directly using:
+    ```bash
+    fastlane deploy
+    ```
+    *This runs `supply` behind the scenes, uploading the `.aab` file and metadata directly to the Play Store console.*
+
+### 2. GitHub Actions automated CD (Cloud Deployments)
+You can configure a GitHub Actions workflow to auto-deploy to the Play Store when merging to `main`:
+1.  **Generate a Service Account JSON Key** from Google Cloud Console under Google Play Console permissions.
+2.  **Add Secrets to GitHub:**
+    *   `PLAY_STORE_JSON_KEY`: The contents of your Service Account JSON.
+    *   `ANDROID_KEYSTORE_BASE64`: A base64-encoded string of your `upload-keystore.jks` file.
+    *   `KEYSTORE_PASSWORD`, `KEY_PASSWORD`, `KEY_ALIAS`: Corresponding signing secrets.
+3.  **Setup Workflow step (`.github/workflows/deploy.yml`):**
+    ```yaml
+    - name: Upload to Google Play
+      uses: r0adrunner/upload-google-play@v1
+      with:
+        serviceAccountJsonPlainText: ${{ secrets.PLAY_STORE_JSON_KEY }}
+        packageName: com.itsmenishmal.madrasapulse
+        releaseFiles: frontend/build/app/outputs/bundle/release/app-release.aab
+        track: internal # or alpha, beta, production
+    ```
+
