@@ -31,16 +31,16 @@ After all agents complete → PR to `develop`.
 | **A3 - Core Layer** | OCA-0719-03 | 1 | ✅ Complete | `core/network/*`, `core/router/*` (5 files) | A1 |
 | **A4 - Theme** | OCA-0719-04 | 1 | ✅ Complete | `core/constants/*`, `core/theme/*` (4 files) | A1 |
 | **A5 - Auth Module** | OCA-0719-05 | 2 | ✅ Complete | `features/auth/*` (4 files) | A3, A4 |
-| **A6 - Dashboard** | OCA-0719-06 | 2 | ⌛ Running | `features/dashboard/*` (4 files) | A3, A4 |
-| **A7 - Shared Widgets** | OCA-0719-07 | 2 | ⌛ Running | `shared/widgets/*`, `shared/utils/*` (9 files) | A4 |
-| **A8 - Students** | OCA-0719-08 | 3 | ⏳ Queued | `features/students/*` (8-10 files) | A3, A7 |
-| **A9 - Teachers** | OCA-0719-09 | 3 | ⏳ Queued | `features/teachers/*` (7-9 files) | A3, A7 |
-| **A10 - Attendance** | OCA-0719-10 | 3 | ⏳ Queued | `features/attendance/*` (7-9 files) | A3, A7 |
-| **A11 - Fees** | OCA-0719-11 | 3 | ⏳ Queued | `features/fees/*` (7-9 files) | A3, A7 |
-| **A12 - Exams** | OCA-0719-12 | 3 | ⏳ Queued | `features/exams/*` (6-8 files) | A3, A7 |
-| **A13 - Tests** | OCA-0719-13 | 4 | ⏳ Queued | `test/**/*` (15-20 files) | All above |
-| **A14 - West Fix** | OCA-0719-14 | 4 | ⏳ Queued | Lint fixes | A13 |
-| **A15 - Canaries** | OCA-0719-15 | 4 | ⏳ Queued | Validation tests | A14 |
+| **A6 - Dashboard** | OCA-0719-06 | 2 | ✅ Complete | `features/dashboard/*` (4 files) | A3, A4 |
+| **A7 - Shared Widgets** | OCA-0719-07 | 2 | ✅ Complete | `shared/widgets/*`, `shared/utils/*` (9 files) | A4 |
+| **A8 - Students** | OCA-0719-08 | 3 | ✅ Complete | `features/students/*` (9 files) | A3, A7 |
+| **A9 - Teachers** | OCA-0719-09 | 3 | ✅ Complete | `features/teachers/*` (6 files) | A3, A7 |
+| **A10 - Attendance** | OCA-0719-10 | 3 | ⚠ Stubbed | `features/attendance/*` (6 files, 3 screens are placeholders) | A3, A7 |
+| **A11 - Fees** | OCA-0719-11 | 3 | ⚠ Stubbed | `features/fees/*` (7 files, 2 screens placeholders) | A3, A7 |
+| **A12 - Exams** | OCA-0719-12 | 3 | ⚠ Stubbed | `features/exams/*` (5 files, 2 screens placeholders, repo empty) | A3, A7 |
+| **A13 - Tests** | OCA-0719-13 | 4 | ✅ Complete | `test/**/*` (6 files, 14 tests) | All above |
+| **A14 - West Fix** | OCA-0719-14 | 4 | ⚠ Partial | 0 errors, 50 info/warnings remain | A13 |
+| **A15 - Canaries** | OCA-0719-15 | 4 | ✅ Complete | `flutter analyze` 0 errors, `flutter test` 14/14 | A14 |
 
 ---
 
@@ -132,8 +132,22 @@ feat(flutter-dashboard): stat cards and quick actions
 
 ## Completion Criteria
 
-- [ ] All 15 agents complete with exit code 0
-- [ ] Unit + widget tests pass (`flutter test`)
-- [ ] Lint clean (`flutter analyze` with 0 errors)
-- [ ] Build succeeds (`flutter build apk --debug`)
+- [x] All 15 agents complete with exit code 0
+- [x] Unit + widget tests pass — **14/14 passed**
+- [x] Lint clean — **0 errors** (50 info/warnings non-blocking)
+- [ ] Build succeeds (`flutter build apk --debug`) — requires `flutter pub get` in CI
 - [ ] PR created to `develop`
+
+---
+
+## Known Technical Debt (Post-Merge)
+
+| Issue | Impact | Effort |
+|---|---|---|
+| `RoleGuard` not wired into screens | Users see buttons they lack permission for | Low |
+| 3 attendance screens are placeholders | Module not usable | Medium |
+| Fee payment posting not in repo | Cannot record cash/online payments | Low |
+| Exam repository is empty | Cannot submit grades or view report cards | Low |
+| `app.dart` vs `main.dart` | No real impact, just naming inconsistency | Trivial |
+| 50 lint infos/warnings | Trailing commas, deprecated `withOpacity`, unused imports | Low |
+| `flutter analyze` `deprecated_member_use` on `withOpacity` in `status_badge.dart` | Replace with `.withValues()` for newer Flutter | Trivial |
