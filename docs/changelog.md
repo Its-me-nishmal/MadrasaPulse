@@ -4,6 +4,16 @@ All notable changes to the MadrasaPulse project will be documented in this file.
 
 ---
 
+## [1.8.0] - 2026-07-19 (Commit: d7ff77b)
+
+### Added
+*   **[FCM Device Registrations]** Programmed push token register endpoints storing parent and student client identifiers on the backend.
+*   **[Mock Alert Dispatches]** Coded Twilio and WhatsApp mock services, verifying alerts routing for attendance anomalies and financial dues.
+*   **[DeviceToken Mongoose Model]** Created collection schema associating device keys to User profiles and OS platforms (`android` vs `ios`).
+*   **[Granular Communication Access]** Integrated routing endpoints protected by RBAC permissions checking (`settings:write`).
+
+---
+
 ## [1.7.0] - 2026-07-19 (Commit: d36e6c1)
 
 ### Added
