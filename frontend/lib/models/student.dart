@@ -31,5 +31,10 @@ class Student with _$Student {
     @Default('') String formattedName,
   }) = _Student;
 
-  factory Student.fromJson(Map<String, dynamic> json) => _$StudentFromJson(json);
+  factory Student.fromJson(Map<String, dynamic> json) {
+    if (json['id'] == null && json['_id'] != null) {
+      json = {...json, 'id': json['_id']};
+    }
+    return _$StudentFromJson(json);
+  }
 }

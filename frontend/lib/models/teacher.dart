@@ -29,5 +29,10 @@ class Teacher with _$Teacher {
     @Default('') String fullName,
   }) = _Teacher;
 
-  factory Teacher.fromJson(Map<String, dynamic> json) => _$TeacherFromJson(json);
+  factory Teacher.fromJson(Map<String, dynamic> json) {
+    if (json['id'] == null && json['_id'] != null) {
+      json = {...json, 'id': json['_id']};
+    }
+    return _$TeacherFromJson(json);
+  }
 }

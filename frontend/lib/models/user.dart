@@ -15,5 +15,10 @@ class AppUser with _$AppUser {
     String? refreshToken,
   }) = _AppUser;
 
-  factory AppUser.fromJson(Map<String, dynamic> json) => _$AppUserFromJson(json);
+  factory AppUser.fromJson(Map<String, dynamic> json) {
+    if (json['id'] == null && json['_id'] != null) {
+      json = {...json, 'id': json['_id']};
+    }
+    return _$AppUserFromJson(json);
+  }
 }

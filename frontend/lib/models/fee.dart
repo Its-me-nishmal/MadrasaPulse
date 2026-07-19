@@ -42,6 +42,10 @@ class FeeLedger with _$FeeLedger {
     @Default([]) List<Invoice> invoices,
   }) = _FeeLedger;
 
-  factory FeeLedger.fromJson(Map<String, dynamic>? json) =>
-      _$FeeLedgerFromJson(json ?? {});
+  factory FeeLedger.fromJson(Map<String, dynamic>? json) {
+    if (json != null && json['id'] == null && json['_id'] != null) {
+      json = {...json, 'id': json['_id']};
+    }
+    return _$FeeLedgerFromJson(json ?? {});
+  }
 }
