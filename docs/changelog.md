@@ -4,6 +4,16 @@ All notable changes to the MadrasaPulse project will be documented in this file.
 
 ---
 
+## [1.6.0] - 2026-07-19 (Commit: 92a49cb)
+
+### Added
+*   **[Invoice Posting Engine]** Implemented endpoints to post custom tuition or registration invoices directly to a student's ledger.
+*   **[Bucketed Ledger Model]** Coded the `FeeLedger` Mongoose model grouping student records per academic year to prevent document growth.
+*   **[Transaction Recording Controller]** Developed payment transaction capturing with automated status transitions (`Paid`, `Partially_Paid`).
+*   **[Granular Fees Access]** Integrated routing endpoints protected by RBAC permissions (`fees:read`, `fees:write`).
+
+---
+
 ## [1.5.0] - 2026-07-19 (Commit: 1e5c83f)
 
 ### Added
