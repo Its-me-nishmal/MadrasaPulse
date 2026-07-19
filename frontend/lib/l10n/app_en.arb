@@ -1,0 +1,129 @@
+{
+  "@@locale": "en",
+  "@@last_modified": "2026-07-19",
+
+  "appTitle": "MadrasaPulse",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+
+  "login": "Login",
+  "@login": {
+    "description": "Login button label"
+  },
+
+  "logout": "Logout",
+  "@logout": {
+    "description": "Logout button label"
+  },
+
+  "username": "Username",
+  "@username": {
+    "description": "Username field label"
+  },
+
+  "password": "Password",
+  "@password": {
+    "description": "Password field label"
+  },
+
+  "dashboard": "Dashboard",
+  "students": "Students",
+  "teachers": "Teachers",
+  "attendance": "Attendance",
+  "fees": "Fees",
+  "exams": "Exams",
+  "communication": "Communication",
+
+  "addStudent": "Add Student",
+  "addTeacher": "Add Teacher",
+  "markAttendance": "Mark Attendance",
+  "createInvoice": "Create Invoice",
+  "recordPayment": "Record Payment",
+  "submitMarks": "Submit Marks",
+
+  "search": "Search",
+  "retry": "Retry",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "save": "Save",
+  "delete": "Delete",
+  "edit": "Edit",
+  "loading": "Loading",
+  "errorOccurred": "An error occurred",
+  "noData": "No data available",
+  "noDataDescription": "There are no records to display yet.",
+
+  "loadingStudents": "Loading students...",
+  "loadingTeachers": "Loading teachers...",
+  "loadingAttendance": "Loading attendance...",
+  "loadingLedger": "Loading ledger...",
+  "loadingRecords": "Loading records...",
+  "loadingReport": "Loading report card...",
+
+  "studentList": "Students List",
+  "teacherList": "Teachers List",
+  "attendanceSheet": "Attendance Sheet",
+  "attendanceSummary": "Attendance Summary",
+  "feeDashboard": "Fee Dashboard",
+  "examRecords": "Exam Records",
+  "reportCard": "Report Card",
+
+  "admissionNo": "Admission No",
+  "rollNo": "Roll No",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "dateOfBirth": "Date of Birth",
+  "classId": "Class",
+  "guardian": "Guardian",
+  "phone": "Phone",
+
+  "staffId": "Staff ID",
+  "email": "Email",
+  "qualifications": "Qualifications",
+  "assignedClasses": "Assigned Classes",
+
+  "present": "Present",
+  "absent": "Absent",
+  "late": "Late",
+  "excused": "Excused",
+
+  "paid": "Paid",
+  "unpaid": "Unpaid",
+  "partiallyPaid": "Partially Paid",
+  "overdue": "Overdue",
+  "invoiceNo": "Invoice No",
+  "amount": "Amount",
+  "dueDate": "Due Date",
+  "paymentMethod": "Payment Method",
+  "transactionId": "Transaction ID",
+
+  "subject": "Subject",
+  "maxMarks": "Max Marks",
+  "marksObtained": "Marks Obtained",
+  "percentage": "Percentage",
+  "overallPercentage": "Overall Percentage",
+
+  "welcomeMessage": "Welcome to MadrasaPulse",
+  "loginSubtitle": "Sign in to manage your madrasa",
+  "invalidCredentials": "Invalid username or password",
+  "sessionExpired": "Session expired. Please login again.",
+
+  "totalStudents": "Total Students",
+  "totalTeachers": "Total Teachers",
+  "todayAttendance": "Today's Attendance",
+  "pendingFees": "Pending Fees",
+
+  "settings": "Settings",
+  "language": "Language",
+  "english": "English",
+  "arabic": "العربية",
+  "malayalam": "മലയാളം",
+  "urdu": "اردو",
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark",
+  "system": "System",
+  "about": "About",
+  "version": "Version"
+}

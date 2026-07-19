@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_spacing.dart';
 
 class AppErrorWidget extends StatelessWidget {
   final String message;
+  final String? title;
   final VoidCallback? onRetry;
+  final IconData icon;
 
-  const AppErrorWidget({super.key, required this.message, this.onRetry});
+  const AppErrorWidget({
+    super.key,
+    required this.message,
+    this.title,
+    this.onRetry,
+    this.icon = Icons.error_outline,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +23,18 @@ class AppErrorWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline, size: 64, color: AppColors.error),
+            Icon(icon, size: 64, color: Theme.of(context).colorScheme.error),
             const SizedBox(height: AppSpacing.md),
+            if (title != null) ...[
+              Text(
+                title!,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.error,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: AppSpacing.sm),
+            ],
             Text(
               message,
               style: Theme.of(context).textTheme.bodyLarge,

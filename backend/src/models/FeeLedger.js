@@ -96,5 +96,8 @@ FeeLedgerSchema.index({ madrasaId: 1 });
 
 // Optimize query performance for individual invoices
 FeeLedgerSchema.index({ madrasaId: 1, 'invoices.invoiceNo': 1 }, { unique: true, sparse: true });
+FeeLedgerSchema.index({ madrasaId: 1, academicYear: 1 });
+FeeLedgerSchema.index({ 'invoices.status': 1 });
+FeeLedgerSchema.index({ 'invoices.dueDate': 1 });
 
 module.exports = mongoose.model('FeeLedger', FeeLedgerSchema);

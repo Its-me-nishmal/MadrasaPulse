@@ -72,5 +72,7 @@ TeacherSchema.index({ madrasaId: 1, isDeleted: 1 });
 
 // Text Index: Optimize global keyword search for teacher names
 TeacherSchema.index({ firstName: 'text', lastName: 'text' });
+TeacherSchema.index({ madrasaId: 1, 'assignedClasses.classId': 1 });
+TeacherSchema.index({ 'assignedClasses.subjectName': 1 });
 
 module.exports = mongoose.model('Teacher', TeacherSchema);

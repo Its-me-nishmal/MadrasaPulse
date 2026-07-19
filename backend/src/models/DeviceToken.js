@@ -25,4 +25,6 @@ const DeviceTokenSchema = new mongoose.Schema(
   }
 );
 
+DeviceTokenSchema.index({ platform: 1 });
+
 module.exports = mongoose.model('DeviceToken', DeviceTokenSchema);

@@ -82,5 +82,8 @@ StudentSchema.index({ madrasaId: 1, classId: 1, isDeleted: 1 });
 
 // Text Index: Optimize global keyword search for name fields
 StudentSchema.index({ firstName: 'text', lastName: 'text' });
+StudentSchema.index({ madrasaId: 1, isDeleted: 1 });
+StudentSchema.index({ classId: 1, isDeleted: 1 });
+StudentSchema.index({ madrasaId: 1, classId: 1, admissionNo: 1 });
 
 module.exports = mongoose.model('Student', StudentSchema);

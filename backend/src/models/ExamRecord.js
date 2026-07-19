@@ -63,5 +63,7 @@ ExamRecordSchema.index({ madrasaId: 1, classId: 1, examId: 1, subjectName: 1 }, 
 
 // Optimize lookups by individual student across exam buckets
 ExamRecordSchema.index({ 'records.studentId': 1 });
+ExamRecordSchema.index({ madrasaId: 1, classId: 1 });
+ExamRecordSchema.index({ classId: 1, examId: 1 });
 
 module.exports = mongoose.model('ExamRecord', ExamRecordSchema);

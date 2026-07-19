@@ -70,6 +70,11 @@ jobs:
           cd frontend
           flutter pub get
 
+      - name: Generate Localizations
+        run: |
+          cd frontend
+          flutter gen-l10n
+
       - name: Flutter Linter Analysis
         run: |
           cd frontend

@@ -29,4 +29,15 @@ class AppColors {
   static const Color absent = Color(0xFFF44336);
   static const Color late = Color(0xFFFF9800);
   static const Color excused = Color(0xFF9E9E9E);
+
+  // Dark mode colors
+  static const Color darkBackground = Color(0xFF121212);
+  static const Color darkSurface = Color(0xFF1E1E1E);
+  static const Color darkCardBackground = Color(0xFF2C2C2C);
+  static const Color darkTextPrimary = Color(0xFFE0E0E0);
+  static const Color darkTextSecondary = Color(0xFFB0B0B0);
+  static const Color darkTextHint = Color(0xFF808080);
+  static const Color darkDivider = Color(0xFF383838);
+  static const Color darkBorder = Color(0xFF404040);
+  static const Color darkAppBar = Color(0xFF1E1E1E);
 }

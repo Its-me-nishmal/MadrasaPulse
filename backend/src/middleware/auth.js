@@ -2,6 +2,10 @@ const { verifyToken } = require('../utils/token');
 
 /**
  * Protects routes requiring valid JWT authorization
+ * @param {import('express').Request} req - Express request object
+ * @param {import('express').Response} res - Express response object
+ * @param {import('express').NextFunction} next - Express next middleware function
+ * @returns {Promise<void>}
  */
 const requireAuth = async (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -42,8 +46,9 @@ const requireAuth = async (req, res, next) => {
 };
 
 /**
- * Validates permission scopes
- * @param {String} requiredPermission 
+ * Validates that the authenticated user has the required permission scope
+ * @param {String} requiredPermission - The permission string to check (e.g. 'students:write')
+ * @returns {import('express').RequestHandler} Middleware function that checks permissions
  */
 const requirePermission = (requiredPermission) => {
   return (req, res, next) => {

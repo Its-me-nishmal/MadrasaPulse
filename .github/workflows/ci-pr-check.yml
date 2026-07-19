@@ -45,3 +45,18 @@ jobs:
         run: |
           cd frontend
           flutter pub get
+
+      - name: Generate Localizations
+        run: |
+          cd frontend
+          flutter gen-l10n
+
+      - name: Flutter Linter Analysis
+        run: |
+          cd frontend
+          flutter analyze
+
+      - name: Run Flutter Tests
+        run: |
+          cd frontend
+          flutter test

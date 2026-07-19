@@ -44,4 +44,7 @@ const MadrasaSchema = new mongoose.Schema(
   }
 );
 
+MadrasaSchema.index({ domain: 1 });
+MadrasaSchema.index({ 'subscription.plan': 1, 'subscription.expiresAt': 1 });
+
 module.exports = mongoose.model('Madrasa', MadrasaSchema);

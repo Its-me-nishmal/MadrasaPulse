@@ -73,5 +73,7 @@ AttendanceBucketSchema.index({ madrasaId: 1, classId: 1, monthYear: 1 }, { uniqu
 
 // Compound Index: Optimize student lookup queries inside class buckets
 AttendanceBucketSchema.index({ 'dailyLogs.records.studentId': 1, monthYear: 1 });
+AttendanceBucketSchema.index({ madrasaId: 1, monthYear: 1 });
+AttendanceBucketSchema.index({ classId: 1, monthYear: 1 });
 
 module.exports = mongoose.model('Attendance', AttendanceBucketSchema);

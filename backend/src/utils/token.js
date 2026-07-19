@@ -5,7 +5,7 @@ const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'anotherrefreshsecr
 
 /**
  * Generates a short-lived access JWT token
- * @param {Object} user 
+ * @param {Object} user
  * @returns {String} access token
  */
 const generateAccessToken = (user) => {
@@ -22,7 +22,7 @@ const generateAccessToken = (user) => {
 
 /**
  * Generates a long-lived refresh JWT token
- * @param {Object} user 
+ * @param {Object} user
  * @returns {String} refresh token
  */
 const generateRefreshToken = (user) => {
@@ -35,8 +35,8 @@ const generateRefreshToken = (user) => {
 
 /**
  * Verifies a JWT token signature
- * @param {String} token 
- * @param {String} secret 
+ * @param {String} token - The JWT string to verify
+ * @param {String} [secretType='access'] - The token type ('access' or 'refresh')
  * @returns {Object} decoded payload
  */
 const verifyToken = (token, secretType = 'access') => {

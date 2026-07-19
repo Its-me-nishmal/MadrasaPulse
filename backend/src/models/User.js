@@ -39,6 +39,8 @@ const UserSchema = new mongoose.Schema(
 
 // Enforce unique usernames per madrasa tenant
 UserSchema.index({ madrasaId: 1, username: 1 }, { unique: true });
+UserSchema.index({ madrasaId: 1, role: 1 });
+UserSchema.index({ isActive: 1 });
 
 // Pre-save password hashing hook
 UserSchema.pre('save', async function (next) {
