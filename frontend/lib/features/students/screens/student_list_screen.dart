@@ -9,6 +9,7 @@ import '../../../shared/widgets/error_widget.dart';
 import '../../../shared/widgets/search_bar_widget.dart';
 import '../controllers/student_list_controller.dart';
 import '../widgets/student_card.dart';
+import 'student_form_screen.dart';
 
 class StudentListScreen extends ConsumerStatefulWidget {
   const StudentListScreen({super.key});
@@ -34,6 +35,15 @@ class _StudentListScreenState extends ConsumerState<StudentListScreen> {
     super.dispose();
   }
 
+  void _showAddStudentModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => const StudentFormScreen(isModal: true),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(studentListControllerProvider);
@@ -42,7 +52,7 @@ class _StudentListScreenState extends ConsumerState<StudentListScreen> {
       title: 'Students',
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () => context.push('/students/add'),
+        onPressed: () => _showAddStudentModal(context),
       ),
       child: Column(
         children: [
