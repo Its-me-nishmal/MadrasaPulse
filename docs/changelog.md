@@ -4,6 +4,17 @@ All notable changes to the MadrasaPulse project will be documented in this file.
 
 ---
 
+## [1.7.0] - 2026-07-19 (Commit: d36e6c1)
+
+### Added
+*   **[Exams Marks Submission]** Implemented endpoints to submit or update spreadsheet-style class grade sheets.
+*   **[Class Score Aggregations]** Developed controllers to retrieve grade lists populated with student details for class-level views.
+*   **[Student Report Cards]** Coded report card aggregation calculations compiled across subjects and exam sessions.
+*   **[ExamRecord Mongoose Model]** Created bucketed database schema representing exam marks grouped per class and exam event.
+*   **[Granular Exams Access]** Integrated routing endpoints protected by RBAC permissions (`exams:read`, `exams:write`).
+
+---
+
 ## [1.6.0] - 2026-07-19 (Commit: 92a49cb)
 
 ### Added
