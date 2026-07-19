@@ -2,69 +2,41 @@
 
 **Author:** Antigravity (Supervisor Agent)  
 **Target:** Flutter Frontend Agents (A8 - A12)  
+**Status:** REJECTED (Pending Stub Resolution & Lint Hardening)
 **Date:** 2026-07-19  
 
-To ensure the Flutter client operates efficiently and securely with the backend API, adhere to these implementation guidelines:
+The current implementation has been **REJECTED** due to incomplete placeholder screens (stubs) and excessive lint warnings. To proceed, the developer agents must resolve all gaps.
 
 ---
 
-## 1. Role-Based Access Control (RBAC) Guarding
-The backend enforces permission checks based on user claims. The frontend must validate user roles and permissions dynamically before rendering action controls:
+## 🔴 Strict Quality Standards
 
-*   **Permissions Mapping:** Refer to `core/models/user.dart` or fetch current claims.
-*   **Actions Checking:**
-    *   **Student Promotions:** Only enable promotion selectors/buttons if user permissions include `students:promote` or `*` (wildcard).
-    *   **Fees & Invoicing:** Only enable "Post Invoice" or "Record Payment" if user has `fees:write`.
-    *   **Exams Entry:** Only show marks editing grids if user has `exams:write`.
+### 1. Zero-Lint-Warning Policy
+*   All `50` warnings/infos (such as missing trailing commas, unused imports, deprecated members, or style rule violations) must be fixed.
+*   Running `flutter analyze` must output exactly `No issues found!`.
 
-**⚠ Execution Gap:** `RoleGuard` widget exists in `shared/widgets/role_guard.dart` but is NOT wired into any A8–A12 screen. This is a post-merge task.
+### 2. Complete Screen Implementations
+Stubs are strictly prohibited. Replace all placeholders in the following modules with actual production-ready interactive UIs:
 
----
-
-## 2. Space-Optimized Bucketing Alignments
-
-### A. Attendance Module (A10)
-*   **API Mapping:** `GET /api/v1/attendance/sheet?classId={classId}&monthYear={yyyy-mm}`
-*   **Data Scoping:** Do NOT perform open-ended attendance queries. Scoped fetches by `monthYear` to load monthly class grid buckets.
-*   **Grid updates:** Update daily logs using `POST /api/v1/attendance` payload body:
-    ```json
-    {
-      "classId": "class_id_here",
-      "date": "2026-07-19",
-      "records": [
-        { "studentId": "student_id", "status": "Present" }
-      ]
-    }
-    ```
-*   **✅ Implementation:** `attendance_repository.dart` has `submitAttendance()`, `getMonthlySheet()`, `getSummary()`.
-*   **⚠ Screen stubs:** `attendance_take_screen.dart` and `attendance_month_screen.dart` are placeholders.
-
-### B. Fees & Financials Module (A11)
-*   **Academic Year Ledger:** Fetch historical student financials using `GET /api/v1/fees/ledger/{studentId}?academicYear={yyyy-yyyy}`.
-*   **Transactions Capturing:** Use `POST /api/v1/fees/pay` to post cash or online payments.
-*   **⚠ Gap:** `fee_repository.dart` only implements `getLedger()` — no payment posting yet.
-
-### C. Exams & Results Module (A12)
-*   **Marks Sheets Posting:** Use `POST /api/v1/exams` to submit class scores grids. Ensure `marksObtained` is validated to not exceed `maxMarks`.
-*   **Report Card Compilations:** Use `GET /api/v1/exams/report/{studentId}` to aggregate multi-subject grade history percentages.
-*   **⚠ Gap:** `exam_repository.dart` is empty (no post/get methods implemented).
+*   **Attendance Module (A10):**
+    *   `attendance_take_screen.dart`: Provide a toggleable student list (Present/Absent/Late) with a submit button sending data to the backend via `AttendanceController`.
+    *   `attendance_month_screen.dart`: Render a monthly class grid populated with student daily logs.
+    *   `attendance_summary_screen.dart`: Render statistics (presence rate, total present/absent counters).
+*   **Fees & Financials Module (A11):**
+    *   `payment_screen.dart` / `invoice_screen.dart`: Allow admins to input cash payments, updating balances and invoice statuses dynamically.
+*   **Exams & Results Module (A12):**
+    *   `exam_repository.dart` must be fully implemented. Do not leave it empty.
+    *   Implement grade-sheet submission grids and individual report card viewers.
 
 ---
 
-## 3. Dio Client Configuration
-*   ✅ All requests pass `Authorization: Bearer <accessToken>` header via interceptor.
-*   ✅ JWT token rotation on 401 via /api/v1/auth/refresh is implemented in `dio_client.dart`.
-*   ✅ `dio_client.dart` exposes `setTokens()`, `clearTokens()`, `get/post/put/delete` methods.
+## 3. Role-Based Access Control (RBAC) Integration
+*   The `RoleGuard` widget (`shared/widgets/role_guard.dart`) must be actively wrapped around critical administrative actions (e.g. promoting students, registering payments, or recording exam grades).
+*   Buttons must be disabled or hidden if the user's role permissions do not match the required scopes.
 
 ---
 
-## 4. Validation Results (Post-Execution)
-
-| Check | Result |
-|---|---|
-| `flutter analyze` errors | **0** |
-| `flutter analyze` warnings/infos | **50** (trailing commas, deprecations — non-blocking) |
-| `flutter test` | **14/14 passed** |
-| Branch | `feature/flutter-frontend` |
-| Key screens stubbed | attendance_take, attendance_month, attendance_summary, fee_dashboard, payment, grade_entry, report_card |
-| `app.dart` | Not created — `MadrasaPulseApp` lives in `main.dart` |
+## 4. Final Exit Criteria
+- [ ] All stubs replaced with fully operational, server-interactive screens.
+- [ ] `flutter analyze` runs clean with `0 errors`, `0 warnings`, and `0 infos`.
+- [ ] All unit, widget, and mock integration tests pass successfully (`flutter test`).
