@@ -4,6 +4,16 @@ All notable changes to the MadrasaPulse project will be documented in this file.
 
 ---
 
+## [1.1.0] - 2026-07-19 (Commit: 8d18e17)
+
+### Added
+*   **[JWT Authentication Service]** Developed full token validation engine including Access Token generation (15m) and Refresh Token rotation (30d) logic.
+*   **[User Database Schema]** Created MongoDB User collection schema with automatic pre-save password bcrypt hashing and unique tenant indexing.
+*   **[Auth Endpoints]** Implemented Express controllers and router endpoints for `/register`, `/login`, and `/refresh`.
+*   **[Authorization Guard Middleware]** Developed `requireAuth` and `requirePermission` middlewares to validate session states and enforce role-based access control (RBAC).
+
+---
+
 ## [1.0.0] - 2026-07-19 (Commit: 47a074e)
 
 ### Added
