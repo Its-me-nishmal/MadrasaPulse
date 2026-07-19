@@ -21,6 +21,10 @@ app.get('/api/v1/health', (req, res) => {
 const authRoutes = require('./routes/authRoutes');
 app.use('/api/v1/auth', authRoutes);
 
+// Student Routes registration
+const studentRoutes = require('./routes/studentRoutes');
+app.use('/api/v1/students', studentRoutes);
+
 // Global Error Handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
