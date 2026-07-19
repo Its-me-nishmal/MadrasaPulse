@@ -79,8 +79,8 @@ Global SaaS control panel:
 
 ## 10. Development Roadmap
 * **Phase 1 (W1-3) - ✅ [COMPLETED]:** Monorepo structure, DB schemas (Madrasa, Student, Teacher, Attendance buckets), Docker environment (Dockerfile & docker-compose), and JWT authentication.
-* **Phase 2 (W4-8) - 🚀 [NEXT IN QUEUE]:** Student, Teacher, and Attendance core modules.
-* **Phase 3 (W9-12):** Fees, Payments gateway, Exam mark grids, and PDF generation.
+* **Phase 2 (W4-8) - ✅ [COMPLETED]:** Student, Teacher, and Attendance core modules (CRUD, search, bulk promotions, class allocations, and capped attendance grids).
+* **Phase 3 (W9-12) - 🚀 [NEXT IN QUEUE]:** Fees, Payments gateway, Exam mark grids, and PDF generation.
 * **Phase 4 (W13-15):** Parent/Student Portals, Twilio/WhatsApp APIs, and push notifications.
 * **Phase 5 (W16-18):** End-to-end testing, AWS deployment, App Store and Play Store launch.
 
