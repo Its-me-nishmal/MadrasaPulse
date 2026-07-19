@@ -4,6 +4,16 @@ All notable changes to the MadrasaPulse project will be documented in this file.
 
 ---
 
+## [1.5.0] - 2026-07-19 (Commit: 1e5c83f)
+
+### Added
+*   **[Daily Attendance Submission]** Built endpoints to register daily student attendance records, checking and modifying log histories dynamically inside Mongoose buckets.
+*   **[Monthly Sheet Grid View]** Programmed monthly sheet lookups filterable by `classId` and `monthYear` parameters with populated student data parameters.
+*   **[Attendance Analytics Engine]** Developed summary indicators returning total present/absent counts and monthly attendance percentages.
+*   **[Granular Attendance Router]** Integrated Express router secured by RBAC permissions (`attendance:read`, `attendance:write`).
+
+---
+
 ## [1.4.0] - 2026-07-19 (Commit: 9297926)
 
 ### Added
