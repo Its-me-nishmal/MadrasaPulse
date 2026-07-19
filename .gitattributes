@@ -1,0 +1,22 @@
+# Auto-normalize line endings
+* text=auto
+
+# Lock files are binary
+package-lock.json -text
+
+# Batch files need CRLF
+*.bat text eol=crlf
+
+# Shell scripts need LF
+*.sh text eol=lf
+
+# Markdown, YAML, JS, Dart, TS
+*.md text diff=markdown
+*.yml text
+*.yaml text
+*.js text
+*.dart text
+*.arb text
+*.json text
+*.css text
+*.html text
