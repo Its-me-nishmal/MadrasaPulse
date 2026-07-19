@@ -37,6 +37,10 @@ app.use('/api/v1/attendance', attendanceRoutes);
 const feeRoutes = require('./routes/feeRoutes');
 app.use('/api/v1/fees', feeRoutes);
 
+// Exams Routes registration
+const examRoutes = require('./routes/examRoutes');
+app.use('/api/v1/exams', examRoutes);
+
 // Global Error Handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
