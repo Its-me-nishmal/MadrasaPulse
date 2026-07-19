@@ -17,6 +17,8 @@ The backend enforces permission checks based on user claims. The frontend must v
     *   **Fees & Invoicing:** Only enable "Post Invoice" or "Record Payment" if user has `fees:write`.
     *   **Exams Entry:** Only show marks editing grids if user has `exams:write`.
 
+**⚠ Execution Gap:** `RoleGuard` widget exists in `shared/widgets/role_guard.dart` but is NOT wired into any A8–A12 screen. This is a post-merge task.
+
 ---
 
 ## 2. Space-Optimized Bucketing Alignments
@@ -34,17 +36,35 @@ The backend enforces permission checks based on user claims. The frontend must v
       ]
     }
     ```
+*   **✅ Implementation:** `attendance_repository.dart` has `submitAttendance()`, `getMonthlySheet()`, `getSummary()`.
+*   **⚠ Screen stubs:** `attendance_take_screen.dart` and `attendance_month_screen.dart` are placeholders.
 
 ### B. Fees & Financials Module (A11)
 *   **Academic Year Ledger:** Fetch historical student financials using `GET /api/v1/fees/ledger/{studentId}?academicYear={yyyy-yyyy}`.
 *   **Transactions Capturing:** Use `POST /api/v1/fees/pay` to post cash or online payments.
+*   **⚠ Gap:** `fee_repository.dart` only implements `getLedger()` — no payment posting yet.
 
 ### C. Exams & Results Module (A12)
 *   **Marks Sheets Posting:** Use `POST /api/v1/exams` to submit class scores grids. Ensure `marksObtained` is validated to not exceed `maxMarks`.
 *   **Report Card Compilations:** Use `GET /api/v1/exams/report/{studentId}` to aggregate multi-subject grade history percentages.
+*   **⚠ Gap:** `exam_repository.dart` is empty (no post/get methods implemented).
 
 ---
 
 ## 3. Dio Client Configuration
-*   Ensure all requests pass `Authorization: Bearer <accessToken>` header.
-*   Use `Dio` interceptors for JWT token rotation (requesting new access token via `/api/v1/auth/refresh` on `401 Unauthorized` responses).
+*   ✅ All requests pass `Authorization: Bearer <accessToken>` header via interceptor.
+*   ✅ JWT token rotation on 401 via /api/v1/auth/refresh is implemented in `dio_client.dart`.
+*   ✅ `dio_client.dart` exposes `setTokens()`, `clearTokens()`, `get/post/put/delete` methods.
+
+---
+
+## 4. Validation Results (Post-Execution)
+
+| Check | Result |
+|---|---|
+| `flutter analyze` errors | **0** |
+| `flutter analyze` warnings/infos | **50** (trailing commas, deprecations — non-blocking) |
+| `flutter test` | **14/14 passed** |
+| Branch | `feature/flutter-frontend` |
+| Key screens stubbed | attendance_take, attendance_month, attendance_summary, fee_dashboard, payment, grade_entry, report_card |
+| `app.dart` | Not created — `MadrasaPulseApp` lives in `main.dart` |
