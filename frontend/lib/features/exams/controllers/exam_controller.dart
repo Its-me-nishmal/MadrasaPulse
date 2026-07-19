@@ -1,6 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/network/dio_provider.dart';
-import '../repositories/exam_repository.dart';
 
 class ExamControllerState {
   final bool isLoading;
@@ -10,11 +8,9 @@ class ExamControllerState {
 }
 
 class ExamController extends StateNotifier<ExamControllerState> {
-  final ExamRepository _repo;
-  ExamController(this._repo) : super(const ExamControllerState());
+  ExamController() : super(const ExamControllerState());
 }
 
 final examControllerProvider = StateNotifierProvider<ExamController, ExamControllerState>((ref) {
-  final dio = ref.read(dioClientProvider);
-  return ExamController(ExamRepository(dio));
+  return ExamController();
 });

@@ -21,7 +21,8 @@ class TeacherDetailScreen extends ConsumerWidget {
                   message: state.error!,
                   onRetry: () => ref
                       .read(teacherDetailControllerProvider(teacherId).notifier)
-                      .loadTeacher(teacherId))
+                      .loadTeacher(teacherId),
+                  )
               : _buildContent(context, state),
     );
   }
@@ -35,12 +36,16 @@ class TeacherDetailScreen extends ConsumerWidget {
           CircleAvatar(
               radius: 40,
               child: Text('${t.firstName[0]}${t.lastName[0]}',
-                  style: const TextStyle(fontSize: 24))),
+                  style: const TextStyle(fontSize: 24),
+                  ),
+              ),
           const SizedBox(height: AppSpacing.md),
           Text('${t.firstName} ${t.lastName}',
-              style: Theme.of(context).textTheme.headlineSmall),
+              style: Theme.of(context).textTheme.headlineSmall,
+              ),
           Text('Staff ID: ${t.staffId}',
-              style: Theme.of(context).textTheme.bodyMedium),
+              style: Theme.of(context).textTheme.bodyMedium,
+              ),
           const SizedBox(height: AppSpacing.lg),
           Card(
             child: Padding(
@@ -49,7 +54,8 @@ class TeacherDetailScreen extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Details',
-                      style: Theme.of(context).textTheme.titleMedium),
+                      style: Theme.of(context).textTheme.titleMedium,
+                      ),
                   const Divider(),
                   _row('Phone', t.phone),
                   if (t.email != null) _row('Email', t.email!),
@@ -67,8 +73,9 @@ class TeacherDetailScreen extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Text(label, style: const TextStyle(color: Colors.grey)),
-        Text(value)
-      ]),
+        Text(value),
+      ],
+      ),
     );
   }
 }

@@ -79,16 +79,16 @@ Map<String, dynamic> _$$AttendanceSummaryImplToJson(
 
 _$AmountsImpl _$$AmountsImplFromJson(Map<String, dynamic> json) =>
     _$AmountsImpl(
-      Present: (json['Present'] as num?)?.toInt() ?? 0,
-      Absent: (json['Absent'] as num?)?.toInt() ?? 0,
-      Late: (json['Late'] as num?)?.toInt() ?? 0,
-      Excused: (json['Excused'] as num?)?.toInt() ?? 0,
+      present: (json['Present'] as num?)?.toInt() ?? 0,
+      absent: (json['Absent'] as num?)?.toInt() ?? 0,
+      late: (json['Late'] as num?)?.toInt() ?? 0,
+      excused: (json['Excused'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$AmountsImplToJson(_$AmountsImpl instance) =>
     <String, dynamic>{
-      'Present': instance.Present,
-      'Absent': instance.Absent,
-      'Late': instance.Late,
-      'Excused': instance.Excused,
+      'Present': instance.present,
+      'Absent': instance.absent,
+      'Late': instance.late,
+      'Excused': instance.excused,
     };

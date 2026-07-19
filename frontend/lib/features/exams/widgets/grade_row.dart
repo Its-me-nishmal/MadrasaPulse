@@ -11,7 +11,8 @@ class GradeRow extends StatelessWidget {
       required this.studentName,
       required this.marks,
       required this.maxMarks,
-      this.onChanged});
+      this.onChanged,
+      });
 
   @override
   Widget build(BuildContext context) {

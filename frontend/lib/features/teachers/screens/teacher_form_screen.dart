@@ -45,9 +45,10 @@ class _TeacherFormScreenState extends ConsumerState<TeacherFormScreen> {
       ref.invalidate(teacherListControllerProvider);
       if (mounted) context.pop();
     } catch (e) {
-      if (mounted)
+      if (mounted) {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text('Error: $e')));
+      }
     } finally {
       setState(() => _isSubmitting = false);
     }
@@ -66,22 +67,26 @@ class _TeacherFormScreenState extends ConsumerState<TeacherFormScreen> {
               TextFormField(
                   controller: _staffIdCtrl,
                   decoration: const InputDecoration(labelText: 'Staff ID'),
-                  validator: Validators.required),
+                  validator: Validators.required,
+                  ),
               const SizedBox(height: AppSpacing.formFieldGap),
               TextFormField(
                   controller: _firstNameCtrl,
                   decoration: const InputDecoration(labelText: 'First Name'),
-                  validator: Validators.required),
+                  validator: Validators.required,
+                  ),
               const SizedBox(height: AppSpacing.formFieldGap),
               TextFormField(
                   controller: _lastNameCtrl,
                   decoration: const InputDecoration(labelText: 'Last Name'),
-                  validator: Validators.required),
+                  validator: Validators.required,
+                  ),
               const SizedBox(height: AppSpacing.formFieldGap),
               TextFormField(
                   controller: _phoneCtrl,
                   decoration: const InputDecoration(labelText: 'Phone'),
-                  validator: Validators.phone),
+                  validator: Validators.phone,
+                  ),
               const SizedBox(height: AppSpacing.xl),
               ElevatedButton(
                 onPressed: _isSubmitting ? null : _submit,
@@ -89,7 +94,8 @@ class _TeacherFormScreenState extends ConsumerState<TeacherFormScreen> {
                     ? const SizedBox(
                         width: 20,
                         height: 20,
-                        child: CircularProgressIndicator(strokeWidth: 2))
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
                     : const Text('Save'),
               ),
             ],

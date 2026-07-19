@@ -60,7 +60,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const Icon(Icons.mosque_outlined,
-                      size: 64, color: AppColors.primaryDark),
+                      size: 64, color: AppColors.primaryDark,
+                      ),
                   const SizedBox(height: AppSpacing.md),
                   const Text(
                     'MadrasaPulse',
@@ -103,9 +104,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       suffixIcon: IconButton(
                         icon: Icon(_obscurePassword
                             ? Icons.visibility
-                            : Icons.visibility_off),
+                            : Icons.visibility_off,
+                            ),
                         onPressed: () => setState(
-                            () => _obscurePassword = !_obscurePassword),
+                            () => _obscurePassword = !_obscurePassword,
+                            ),
                       ),
                     ),
                     validator: (v) =>
@@ -119,7 +122,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             height: 20,
                             width: 20,
                             child: CircularProgressIndicator(
-                                strokeWidth: 2, color: Colors.white),
+                                strokeWidth: 2, color: Colors.white,
+                                ),
                           )
                         : const Text('Sign In'),
                   ),

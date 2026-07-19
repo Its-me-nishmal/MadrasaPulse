@@ -15,7 +15,7 @@ void main() {
             'name': 'Jane Doe',
             'relationship': 'Mother',
             'phone': '1234567890',
-            'isPrimary': true
+            'isPrimary': true,
           },
         ],
         'isDeleted': false,

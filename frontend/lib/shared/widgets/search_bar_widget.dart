@@ -17,7 +17,8 @@ class AppSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.sm, vertical: AppSpacing.sm),
+          horizontal: AppSpacing.sm, vertical: AppSpacing.sm,
+          ),
       child: TextField(
         controller: controller,
         decoration: InputDecoration(

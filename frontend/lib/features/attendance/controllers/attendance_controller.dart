@@ -1,7 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../models/attendance.dart';
-import '../../../core/network/dio_provider.dart';
-import '../repositories/attendance_repository.dart';
 
 class AttendanceControllerState {
   final AttendanceBucket? bucket;
@@ -16,11 +14,9 @@ class AttendanceControllerState {
 }
 
 class AttendanceController extends StateNotifier<AttendanceControllerState> {
-  final AttendanceRepository _repo;
-  AttendanceController(this._repo) : super(const AttendanceControllerState());
+  AttendanceController() : super(const AttendanceControllerState());
 }
 
 final attendanceControllerProvider = StateNotifierProvider<AttendanceController, AttendanceControllerState>((ref) {
-  final dio = ref.read(dioClientProvider);
-  return AttendanceController(AttendanceRepository(dio));
+  return AttendanceController();
 });

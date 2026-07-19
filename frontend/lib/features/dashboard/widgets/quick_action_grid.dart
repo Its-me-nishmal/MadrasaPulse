@@ -10,9 +10,11 @@ class QuickActionGrid extends StatelessWidget {
     _QuickAction('Students', Icons.people, AppColors.info, '/students'),
     _QuickAction('Teachers', Icons.person, AppColors.success, '/teachers'),
     _QuickAction(
-        'Attendance', Icons.checklist, AppColors.warning, '/attendance'),
+        'Attendance', Icons.checklist, AppColors.warning, '/attendance',
+        ),
     _QuickAction(
-        'Fees', Icons.account_balance_wallet, AppColors.error, '/fees'),
+        'Fees', Icons.account_balance_wallet, AppColors.error, '/fees',
+        ),
     _QuickAction('Exams', Icons.school, AppColors.primaryLight, '/exams'),
   ];
 

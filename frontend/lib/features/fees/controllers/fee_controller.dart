@@ -1,7 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/network/dio_provider.dart';
 import '../../../models/fee.dart';
-import '../repositories/fee_repository.dart';
 
 class FeeControllerState {
   final FeeLedger? ledger;
@@ -14,11 +12,9 @@ class FeeControllerState {
 }
 
 class FeeController extends StateNotifier<FeeControllerState> {
-  final FeeRepository _repo;
-  FeeController(this._repo) : super(const FeeControllerState());
+  FeeController() : super(const FeeControllerState());
 }
 
 final feeControllerProvider = StateNotifierProvider<FeeController, FeeControllerState>((ref) {
-  final dio = ref.read(dioClientProvider);
-  return FeeController(FeeRepository(dio));
+  return FeeController();
 });

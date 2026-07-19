@@ -43,7 +43,8 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
               style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textPrimary),
+                  color: AppColors.textPrimary,
+                  ),
             ),
             SizedBox(height: AppSpacing.lg),
             CircularProgressIndicator(),

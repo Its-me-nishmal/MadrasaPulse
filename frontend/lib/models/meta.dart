@@ -14,6 +14,4 @@ class Meta with _$Meta {
 
   factory Meta.fromJson(Map<String, dynamic>? json) =>
       _$MetaFromJson(json ?? {});
-
-  const Meta._();
 }

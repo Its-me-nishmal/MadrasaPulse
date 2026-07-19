@@ -33,7 +33,8 @@ class AuthController extends StateNotifier<AuthStatus> {
   }
 
   Future<String?> login(
-      String madrasaId, String username, String password) async {
+      String madrasaId, String username, String password,
+      ) async {
     try {
       final response = await _dio.post(
         '/auth/login',
@@ -46,7 +47,8 @@ class AuthController extends StateNotifier<AuthStatus> {
       final data = response.data['data'];
       _currentUser = AppUser.fromJson(data['user']);
       _dio.setTokens(
-          access: data['accessToken'], refresh: data['refreshToken']);
+          access: data['accessToken'], refresh: data['refreshToken'],
+          );
       _persistTokens(data['accessToken'], data['refreshToken']);
       state = AuthStatus.authenticated;
       _routerNotifier.login();

@@ -836,10 +836,10 @@ Amounts _$AmountsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Amounts {
-  int get Present => throw _privateConstructorUsedError;
-  int get Absent => throw _privateConstructorUsedError;
-  int get Late => throw _privateConstructorUsedError;
-  int get Excused => throw _privateConstructorUsedError;
+  int get present => throw _privateConstructorUsedError;
+  int get absent => throw _privateConstructorUsedError;
+  int get late => throw _privateConstructorUsedError;
+  int get excused => throw _privateConstructorUsedError;
 
   /// Serializes this Amounts to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -855,7 +855,7 @@ abstract class $AmountsCopyWith<$Res> {
   factory $AmountsCopyWith(Amounts value, $Res Function(Amounts) then) =
       _$AmountsCopyWithImpl<$Res, Amounts>;
   @useResult
-  $Res call({int Present, int Absent, int Late, int Excused});
+  $Res call({int present, int absent, int late, int excused});
 }
 
 /// @nodoc
@@ -873,27 +873,27 @@ class _$AmountsCopyWithImpl<$Res, $Val extends Amounts>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? Present = null,
-    Object? Absent = null,
-    Object? Late = null,
-    Object? Excused = null,
+    Object? present = null,
+    Object? absent = null,
+    Object? late = null,
+    Object? excused = null,
   }) {
     return _then(_value.copyWith(
-      Present: null == Present
-          ? _value.Present
-          : Present // ignore: cast_nullable_to_non_nullable
+      present: null == present
+          ? _value.present
+          : present // ignore: cast_nullable_to_non_nullable
               as int,
-      Absent: null == Absent
-          ? _value.Absent
-          : Absent // ignore: cast_nullable_to_non_nullable
+      absent: null == absent
+          ? _value.absent
+          : absent // ignore: cast_nullable_to_non_nullable
               as int,
-      Late: null == Late
-          ? _value.Late
-          : Late // ignore: cast_nullable_to_non_nullable
+      late: null == late
+          ? _value.late
+          : late // ignore: cast_nullable_to_non_nullable
               as int,
-      Excused: null == Excused
-          ? _value.Excused
-          : Excused // ignore: cast_nullable_to_non_nullable
+      excused: null == excused
+          ? _value.excused
+          : excused // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -906,7 +906,7 @@ abstract class _$$AmountsImplCopyWith<$Res> implements $AmountsCopyWith<$Res> {
       __$$AmountsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int Present, int Absent, int Late, int Excused});
+  $Res call({int present, int absent, int late, int excused});
 }
 
 /// @nodoc
@@ -922,27 +922,27 @@ class __$$AmountsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? Present = null,
-    Object? Absent = null,
-    Object? Late = null,
-    Object? Excused = null,
+    Object? present = null,
+    Object? absent = null,
+    Object? late = null,
+    Object? excused = null,
   }) {
     return _then(_$AmountsImpl(
-      Present: null == Present
-          ? _value.Present
-          : Present // ignore: cast_nullable_to_non_nullable
+      present: null == present
+          ? _value.present
+          : present // ignore: cast_nullable_to_non_nullable
               as int,
-      Absent: null == Absent
-          ? _value.Absent
-          : Absent // ignore: cast_nullable_to_non_nullable
+      absent: null == absent
+          ? _value.absent
+          : absent // ignore: cast_nullable_to_non_nullable
               as int,
-      Late: null == Late
-          ? _value.Late
-          : Late // ignore: cast_nullable_to_non_nullable
+      late: null == late
+          ? _value.late
+          : late // ignore: cast_nullable_to_non_nullable
               as int,
-      Excused: null == Excused
-          ? _value.Excused
-          : Excused // ignore: cast_nullable_to_non_nullable
+      excused: null == excused
+          ? _value.excused
+          : excused // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -952,27 +952,27 @@ class __$$AmountsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AmountsImpl implements _Amounts {
   const _$AmountsImpl(
-      {this.Present = 0, this.Absent = 0, this.Late = 0, this.Excused = 0});
+      {this.present = 0, this.absent = 0, this.late = 0, this.excused = 0});
 
   factory _$AmountsImpl.fromJson(Map<String, dynamic> json) =>
       _$$AmountsImplFromJson(json);
 
   @override
   @JsonKey()
-  final int Present;
+  final int present;
   @override
   @JsonKey()
-  final int Absent;
+  final int absent;
   @override
   @JsonKey()
-  final int Late;
+  final int late;
   @override
   @JsonKey()
-  final int Excused;
+  final int excused;
 
   @override
   String toString() {
-    return 'Amounts(Present: $Present, Absent: $Absent, Late: $Late, Excused: $Excused)';
+    return 'Amounts(present: $present, absent: $absent, late: $late, excused: $excused)';
   }
 
   @override
@@ -980,15 +980,15 @@ class _$AmountsImpl implements _Amounts {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AmountsImpl &&
-            (identical(other.Present, Present) || other.Present == Present) &&
-            (identical(other.Absent, Absent) || other.Absent == Absent) &&
-            (identical(other.Late, Late) || other.Late == Late) &&
-            (identical(other.Excused, Excused) || other.Excused == Excused));
+            (identical(other.present, present) || other.present == present) &&
+            (identical(other.absent, absent) || other.absent == absent) &&
+            (identical(other.late, late) || other.late == late) &&
+            (identical(other.excused, excused) || other.excused == excused));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, Present, Absent, Late, Excused);
+  int get hashCode => Object.hash(runtimeType, present, absent, late, excused);
 
   /// Create a copy of Amounts
   /// with the given fields replaced by the non-null parameter values.
@@ -1008,21 +1008,21 @@ class _$AmountsImpl implements _Amounts {
 
 abstract class _Amounts implements Amounts {
   const factory _Amounts(
-      {final int Present,
-      final int Absent,
-      final int Late,
-      final int Excused}) = _$AmountsImpl;
+      {final int present,
+      final int absent,
+      final int late,
+      final int excused}) = _$AmountsImpl;
 
   factory _Amounts.fromJson(Map<String, dynamic> json) = _$AmountsImpl.fromJson;
 
   @override
-  int get Present;
+  int get present;
   @override
-  int get Absent;
+  int get absent;
   @override
-  int get Late;
+  int get late;
   @override
-  int get Excused;
+  int get excused;
 
   /// Create a copy of Amounts
   /// with the given fields replaced by the non-null parameter values.

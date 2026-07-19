@@ -62,7 +62,8 @@ class LoginForm extends ConsumerWidget {
                     height: 20,
                     width: 20,
                     child: CircularProgressIndicator(
-                        strokeWidth: 2, color: Colors.white),
+                        strokeWidth: 2, color: Colors.white,
+                        ),
                   )
                 : const Text('Sign In'),
           ),

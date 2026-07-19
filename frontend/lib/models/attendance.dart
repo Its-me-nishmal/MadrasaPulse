@@ -55,10 +55,10 @@ class AttendanceSummary with _$AttendanceSummary {
 @freezed
 class Amounts with _$Amounts {
   const factory Amounts({
-    @Default(0) int Present,
-    @Default(0) int Absent,
-    @Default(0) int Late,
-    @Default(0) int Excused,
+    @Default(0) @JsonKey(name: 'Present') int present,
+    @Default(0) @JsonKey(name: 'Absent') int absent,
+    @Default(0) @JsonKey(name: 'Late') int late,
+    @Default(0) @JsonKey(name: 'Excused') int excused,
   }) = _Amounts;
 
   factory Amounts.fromJson(Map<String, dynamic>? json) =>
