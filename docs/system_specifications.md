@@ -81,8 +81,8 @@ Global SaaS control panel:
 * **Phase 1 (W1-3) - ✅ [COMPLETED]:** Monorepo structure, DB schemas (Madrasa, Student, Teacher, Attendance buckets), Docker environment (Dockerfile & docker-compose), and JWT authentication.
 * **Phase 2 (W4-8) - ✅ [COMPLETED]:** Student, Teacher, and Attendance core modules (CRUD, search, bulk promotions, class allocations, and capped attendance grids).
 * **Phase 3 (W9-12) - ✅ [COMPLETED]:** Fees, Payments gateway, Exam mark grids, and PDF generation (student ledger buckets, invoice/payment recording, and multi-subject report aggregations).
-* **Phase 4 (W13-15) - 🚀 [NEXT IN QUEUE]:** Parent/Student Portals, Twilio/WhatsApp APIs, and push notifications.
-* **Phase 5 (W16-18):** End-to-end testing, AWS deployment, App Store and Play Store launch.
+* **Phase 4 (W13-15) - ✅ [COMPLETED]:** Parent/Student Portals, Twilio/WhatsApp APIs, and push notifications (FCM device registration, mock Twilio SMS, and WhatsApp Business API dispatches).
+* **Phase 5 (W16-18) - 🚀 [NEXT IN QUEUE]:** End-to-end testing, AWS deployment, App Store and Play Store launch.
 
 ---
 
