@@ -49,3 +49,54 @@ Here are the updated Notion pages containing the detailed technical requirements
     * System administrator dashboard, billing entitlements, and server resources analytics.
 19. 📁 **[Development Roadmap](https://app.notion.com/p/3a22348faea181848934d757b0d209e6)** (ID: `3a22348f-aea1-8184-8934-d757b0d209e6`)
     * Five phases mapping infrastructure setup, core operations, finance, notifications, and app publication.
+
+---
+
+## Free Hosting & CI/CD Deployment Guide
+
+To deploy the **MadrasaPulse** stack entirely for free for demonstration, testing, or staging, utilize the following resource combinations:
+
+### 1. Database Hosting (MongoDB Atlas)
+*   **Provider:** MongoDB Atlas (Free Tier)
+*   **Tier:** M0 Shared Cluster (512 MB Storage)
+*   **Sign-Up:** [mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
+*   **Setup:** Create a free M0 cluster, configure network access (`0.0.0.0/0` for cloud services), obtain your connection string, and set it as `MONGO_URI` in the backend environment variables.
+
+### 2. Backend Hosting (Render, Railway, or Koyeb)
+*   **Option A: Render (Web Services)**
+    *   **Sign-Up:** [render.com](https://render.com)
+    *   **Deploy:** Connect your GitHub repository. Select Node.js web service. Set build command `npm install` and start command `npm start --workspace=backend`.
+    *   *Note:* The free tier spins down after 15 mins of inactivity.
+*   **Option B: Koyeb (Docker Apps)**
+    *   **Sign-Up:** [koyeb.com](https://koyeb.com)
+    *   **Deploy:** Deploys Dockerfiles automatically. Point it to `/backend/Dockerfile`.
+
+### 3. Frontend Web Hosting (Vercel or GitHub Pages)
+*   **Option A: Vercel**
+    *   **Compile:** Run `flutter build web --release` inside the `frontend` folder.
+    *   **Deploy:** Connect the repository to Vercel, select the output folder `frontend/build/web`, and deploy.
+*   **Option B: GitHub Pages**
+    *   Configure a GitHub Actions workflow to build and push the `build/web` directory to a `gh-pages` branch on every push.
+
+### 4. CI/CD Pipelines (GitHub Actions)
+*   GitHub provides **2,000 free minutes/month** for Actions workflows.
+*   Setup `.github/workflows/test.yml` to automatically run tests:
+    ```yaml
+    name: Backend Test Runner
+    on: [push]
+    jobs:
+      test:
+        runs-on: ubuntu-latest
+        services:
+          mongodb:
+            image: mongo:latest
+            ports:
+              - 27017:27017
+        steps:
+          - uses: actions/checkout@v3
+          - uses: actions/setup-node@v3
+            with:
+              node-version: 18
+          - run: npm ci
+          - run: npm test --workspace=backend
+    ```
