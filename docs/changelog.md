@@ -4,6 +4,15 @@ All notable changes to the MadrasaPulse project will be documented in this file.
 
 ---
 
+## [1.9.0] - 2026-07-19 (Commit: 82e14a3)
+
+### Added
+*   **[API Integration Testing Suite]** Written 22 end-to-end integration tests using Jest and Supertest.
+*   **[Core Route Verification]** Validated Auth flow, Student CRUD & promotions, Teacher allocations, monthly Attendance sheets, Fee invoicing/payments, Exam grades, and push DeviceToken registrations.
+*   **[Test Environment Configuration]** Integrated testing runner script executions within the backend package configuration.
+
+---
+
 ## [1.8.0] - 2026-07-19 (Commit: d7ff77b)
 
 ### Added
