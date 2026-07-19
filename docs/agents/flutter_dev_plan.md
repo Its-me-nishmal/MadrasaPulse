@@ -35,12 +35,12 @@ After all agents complete → PR to `develop`.
 | **A7 - Shared Widgets** | OCA-0719-07 | 2 | ✅ Complete | `shared/widgets/*`, `shared/utils/*` (9 files) | A4 |
 | **A8 - Students** | OCA-0719-08 | 3 | ✅ Complete | `features/students/*` (9 files) | A3, A7 |
 | **A9 - Teachers** | OCA-0719-09 | 3 | ✅ Complete | `features/teachers/*` (6 files) | A3, A7 |
-| **A10 - Attendance** | OCA-0719-10 | 3 | ⚠ Stubbed | `features/attendance/*` (6 files, 3 screens are placeholders) | A3, A7 |
-| **A11 - Fees** | OCA-0719-11 | 3 | ⚠ Stubbed | `features/fees/*` (7 files, 2 screens placeholders) | A3, A7 |
-| **A12 - Exams** | OCA-0719-12 | 3 | ⚠ Stubbed | `features/exams/*` (5 files, 2 screens placeholders, repo empty) | A3, A7 |
+| **A10 - Attendance** | OCA-0719-10 | 3 | ✅ Complete | `features/attendance/*` (6 files, 3 screens resolved) | A3, A7 |
+| **A11 - Fees** | OCA-0719-11 | 3 | ✅ Complete | `features/fees/*` (7 files, 2 screens resolved) | A3, A7 |
+| **A12 - Exams** | OCA-0719-12 | 3 | ✅ Complete | `features/exams/*` (5 files, 2 screens resolved, repo active) | A3, A7 |
 | **A13 - Tests** | OCA-0719-13 | 4 | ✅ Complete | `test/**/*` (6 files, 14 tests) | All above |
-| **A14 - West Fix** | OCA-0719-14 | 4 | ⚠ Partial | 0 errors, 50 info/warnings remain | A13 |
-| **A15 - Canaries** | OCA-0719-15 | 4 | ✅ Complete | `flutter analyze` 0 errors, `flutter test` 14/14 | A14 |
+| **A14 - West Fix** | OCA-0719-14 | 4 | ✅ Complete | 0 errors, 0 warnings/infos remain | A13 |
+| **A15 - Canaries** | OCA-0719-15 | 4 | ✅ Complete | `flutter analyze` 0 errors/warnings, `flutter test` 14/14 | A14 |
 
 ---
 
