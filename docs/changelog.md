@@ -4,7 +4,7 @@ All notable changes to the MadrasaPulse project will be documented in this file.
 
 ---
 
-## [1.0.0] - 2026-07-19
+## [1.0.0] - 2026-07-19 (Commit: 47a074e)
 
 ### Added
 *   **[Notion Synchronization]** Sync'ed and fully documented 10 module PRDs, database design specifications, REST API guides, and roadmaps in the Notion Workspace.
