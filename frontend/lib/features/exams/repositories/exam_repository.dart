@@ -33,8 +33,7 @@ class ExamRepository {
 
   Future<List<ReportCardItem>> getReportCard(String studentId) async {
     final response = await _dio.get(
-      ApiConfig.examsReportCard,
-      queryParameters: {'studentId': studentId},
+      ApiConfig.examsReportCard(studentId),
     );
     final data = response.data['data'] as List;
     return data.map((e) => ReportCardItem.fromJson(e)).toList();

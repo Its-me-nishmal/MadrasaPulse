@@ -12,12 +12,12 @@ class ApiConfig {
   static String students({String? id}) => id != null ? '/students/$id' : '/students';
   static const String promoteStudents = '/students/promote';
   static String teachers({String? id}) => id != null ? '/teachers/$id' : '/teachers';
-  static const String attendanceSubmit = '/attendance/submit';
+  static const String attendanceSubmit = '/attendance';
   static const String attendanceSheet = '/attendance/sheet';
   static const String attendanceSummary = '/attendance/summary';
   static const String feesCreateInvoice = '/fees/invoice';
   static String feesStudentLedger(String studentId) => '/fees/ledger/$studentId';
-  static const String feesPayment = '/fees/payment';
-  static const String examsRecords = '/exams/records';
-  static const String examsReportCard = '/exams/report-card';
+  static const String feesPayment = '/fees/pay';
+  static const String examsRecords = '/exams';
+  static String examsReportCard(String studentId) => '/exams/report/$studentId';
 }

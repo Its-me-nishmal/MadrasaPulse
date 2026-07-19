@@ -30,6 +30,9 @@ jobs:
       - name: Install Monorepo Dependencies
         run: npm ci
 
+      - name: Verify API Alignment (Frontend vs Backend)
+        run: node scripts/verify_api_alignment.js
+
       - name: Run Backend Integration Tests
         run: npm test --workspace=backend
         env:

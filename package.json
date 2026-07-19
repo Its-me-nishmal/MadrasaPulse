@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "dev:backend": "npm run dev --workspace=backend",
-    "test:backend": "npm run test --workspace=backend"
+    "test:backend": "npm run test --workspace=backend",
+    "verify:api": "node scripts/verify_api_alignment.js"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
