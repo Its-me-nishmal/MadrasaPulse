@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/constants/app_spacing.dart';
+import '../../../shared/widgets/app_scaffold.dart';
 import '../../../shared/widgets/loading_widget.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../../../shared/widgets/error_widget.dart';
@@ -37,9 +38,13 @@ class _StudentListScreenState extends ConsumerState<StudentListScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(studentListControllerProvider);
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('Students')),
-      body: Column(
+    return AppScaffold(
+      title: 'Students',
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () => context.push('/students/add'),
+      ),
+      child: Column(
         children: [
           AppSearchBar(
             controller: _searchController,
@@ -51,10 +56,6 @@ class _StudentListScreenState extends ConsumerState<StudentListScreen> {
             child: _buildBody(state),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () => context.push('/students/add'),
       ),
     );
   }

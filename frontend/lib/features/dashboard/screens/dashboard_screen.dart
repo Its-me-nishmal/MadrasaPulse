@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_spacing.dart';
+import '../../../shared/widgets/app_scaffold.dart';
 import '../controllers/dashboard_controller.dart';
 import '../widgets/stat_card.dart';
 import '../widgets/quick_action_grid.dart';
@@ -26,9 +27,9 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(dashboardControllerProvider);
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('Dashboard')),
-      body: RefreshIndicator(
+    return AppScaffold(
+      title: 'Dashboard',
+      child: RefreshIndicator(
         onRefresh: () =>
             ref.read(dashboardControllerProvider.notifier).loadDashboard(),
         child: ListView(

@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../../core/network/dio_client.dart';
 import '../../../core/network/dio_provider.dart';
 import '../../../core/router/router_notifier.dart';
@@ -10,6 +11,7 @@ enum AuthStatus { uninitialized, authenticated, unauthenticated }
 class AuthController extends StateNotifier<AuthStatus> {
   final DioClient _dio;
   final RouterNotifier _routerNotifier;
+  final _storage = const FlutterSecureStorage();
 
   AppUser? _currentUser;
   AppUser? get currentUser => _currentUser;
@@ -18,12 +20,12 @@ class AuthController extends StateNotifier<AuthStatus> {
       : super(AuthStatus.uninitialized);
 
   Future<void> tryAutoLogin() async {
-    final storedAccess = _getStoredAccessToken();
+    final storedAccess = await _getStoredAccessToken();
     if (storedAccess != null) {
       _dio.setTokens(access: storedAccess);
       try {
         final response = await _dio.get(ApiConfig.authMe);
-        _currentUser = AppUser.fromJson(response.data['data']);
+        _currentUser = AppUser.fromJson(response.data['data']['user']);
         state = AuthStatus.authenticated;
         _routerNotifier.login();
         return;
@@ -34,8 +36,10 @@ class AuthController extends StateNotifier<AuthStatus> {
   }
 
   Future<String?> login(
-      String madrasaId, String username, String password,
-      ) async {
+    String madrasaId,
+    String username,
+    String password,
+  ) async {
     try {
       final response = await _dio.post(
         ApiConfig.login,
@@ -48,9 +52,10 @@ class AuthController extends StateNotifier<AuthStatus> {
       final data = response.data['data'];
       _currentUser = AppUser.fromJson(data['user']);
       _dio.setTokens(
-          access: data['accessToken'], refresh: data['refreshToken'],
-          );
-      _persistTokens(data['accessToken'], data['refreshToken']);
+        access: data['accessToken'],
+        refresh: data['refreshToken'],
+      );
+      await _persistTokens(data['accessToken'], data['refreshToken']);
       state = AuthStatus.authenticated;
       _routerNotifier.login();
       return null;
@@ -59,19 +64,27 @@ class AuthController extends StateNotifier<AuthStatus> {
     }
   }
 
-  void logout() {
+  Future<void> logout() async {
     _currentUser = null;
     _dio.clearTokens();
-    _clearTokens();
+    await _clearTokens();
     state = AuthStatus.unauthenticated;
     _routerNotifier.logout();
   }
 
-  void _persistTokens(String access, String refresh) {}
+  Future<void> _persistTokens(String access, String refresh) async {
+    await _storage.write(key: 'access_token', value: access);
+    await _storage.write(key: 'refresh_token', value: refresh);
+  }
 
-  String? _getStoredAccessToken() => null;
+  Future<String?> _getStoredAccessToken() async {
+    return await _storage.read(key: 'access_token');
+  }
 
-  void _clearTokens() {}
+  Future<void> _clearTokens() async {
+    await _storage.delete(key: 'access_token');
+    await _storage.delete(key: 'refresh_token');
+  }
 }
 
 final authControllerProvider =
