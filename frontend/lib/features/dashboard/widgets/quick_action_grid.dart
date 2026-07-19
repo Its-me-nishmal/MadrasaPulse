@@ -49,7 +49,7 @@ class QuickActionGrid extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: a.color.withOpacity(0.1),
+                          color: a.color.withValues(alpha: 0.1),
                           shape: BoxShape.circle,
                         ),
                         child: Icon(a.icon, color: a.color, size: 24),

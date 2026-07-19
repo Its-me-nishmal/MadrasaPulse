@@ -14,10 +14,17 @@ GoRouter createRouter(RouterNotifier notifier) {
     initialLocation: '/splash',
     redirect: (context, state) {
       final isAuth = notifier.isAuth;
+      final isInitialized = notifier.isInitialized;
       final isLoggingIn = state.matchedLocation == '/login';
       final isSplash = state.matchedLocation == '/splash';
 
-      if (isSplash) return null;
+      if (!isInitialized) {
+        return isSplash ? null : '/splash';
+      }
+
+      if (isSplash) {
+        return isAuth ? '/dashboard' : '/login';
+      }
 
       if (!isAuth) {
         return isLoggingIn ? null : '/login';
