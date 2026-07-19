@@ -4,6 +4,16 @@ All notable changes to the MadrasaPulse project will be documented in this file.
 
 ---
 
+## [1.4.0] - 2026-07-19 (Commit: 9297926)
+
+### Added
+*   **[Teacher Onboarding Controller]** Created API endpoints for registering staff profiles, listing directory records, modifying credentials, and soft-delete archiving.
+*   **[Class & Subject Allocations]** Implemented dynamic validation schemas linking teachers to subject domains and grade classes context.
+*   **[Granular Teacher Access]** Secured routing endpoints under RBAC permission checks (`teachers:read`, `teachers:write`, `teachers:delete`).
+*   **[Environment Tooling Sanitization]** Updated `.gitignore` to omit local development diagnostic outputs.
+
+---
+
 ## [1.3.0] - 2026-07-19 (Commit: 8343d2c)
 
 ### Added
