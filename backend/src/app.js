@@ -1,7 +1,21 @@
 const express = require('express');
 const cors = require('cors');
+const mongoose = require('mongoose');
+const connectDB = require('./config/db');
 
 const app = express();
+
+// Serverless DB Connection Middleware
+app.use(async (req, res, next) => {
+  if (mongoose.connection.readyState === 0) {
+    try {
+      await connectDB();
+    } catch (err) {
+      return next(err);
+    }
+  }
+  next();
+});
 
 // Middlewares
 app.use(cors());
