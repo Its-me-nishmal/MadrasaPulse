@@ -25,6 +25,10 @@ app.use('/api/v1/auth', authRoutes);
 const studentRoutes = require('./routes/studentRoutes');
 app.use('/api/v1/students', studentRoutes);
 
+// Teacher Routes registration
+const teacherRoutes = require('./routes/teacherRoutes');
+app.use('/api/v1/teachers', teacherRoutes);
+
 // Global Error Handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
