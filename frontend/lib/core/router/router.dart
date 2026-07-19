@@ -12,6 +12,23 @@ GoRouter createRouter(RouterNotifier notifier) {
   return GoRouter(
     refreshListenable: notifier,
     initialLocation: '/splash',
+    redirect: (context, state) {
+      final isAuth = notifier.isAuth;
+      final isLoggingIn = state.matchedLocation == '/login';
+      final isSplash = state.matchedLocation == '/splash';
+
+      if (isSplash) return null;
+
+      if (!isAuth) {
+        return isLoggingIn ? null : '/login';
+      }
+
+      if (isLoggingIn) {
+        return '/dashboard';
+      }
+
+      return null;
+    },
     routes: [
       GoRoute(
         path: '/splash',

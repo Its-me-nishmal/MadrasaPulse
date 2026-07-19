@@ -54,7 +54,8 @@ class AuthController extends StateNotifier<AuthStatus> {
       _routerNotifier.login();
       return null;
     } catch (e) {
-      return 'Login failed. Check your credentials.';
+      print('LOGIN_ERROR: $e');
+      return 'Login failed: $e';
     }
   }
 
