@@ -4,6 +4,16 @@ All notable changes to the MadrasaPulse project will be documented in this file.
 
 ---
 
+## [1.3.0] - 2026-07-19 (Commit: 8343d2c)
+
+### Added
+*   **[Student CRUD Controllers]** Developed endpoints for registering a new student, retrieving profiles by ID, updating personal details, and soft-delete archiving.
+*   **[Paginated Student Directory]** Implemented filterable list queries supporting regex name searches, class scoping, and pagination statistics.
+*   **[Bulk Student Promotion]** Built promotion controller mapping arrays of student IDs to target class IDs.
+*   **[Protected Student Routes]** Added express routers guarded by RBAC permissions (`students:read`, `students:write`, `students:delete`, `students:promote`).
+
+---
+
 ## [1.2.0] - 2026-07-19 (Commit: f0439eb)
 
 ### Added
