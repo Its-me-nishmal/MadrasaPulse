@@ -13,10 +13,12 @@ class TeacherAssignment with _$TeacherAssignment {
   factory TeacherAssignment.fromJson(Map<String, dynamic> json) => _$TeacherAssignmentFromJson(json);
 }
 
+Object? _readId(Map map, String key) => map['id'] ?? map['_id'];
+
 @freezed
 class Teacher with _$Teacher {
   const factory Teacher({
-    required String id,
+    @JsonKey(readValue: _readId) required String id,
     required String madrasaId,
     required String staffId,
     @Default('') String firstName,
@@ -29,10 +31,6 @@ class Teacher with _$Teacher {
     @Default('') String fullName,
   }) = _Teacher;
 
-  factory Teacher.fromJson(Map<String, dynamic> json) {
-    if (json['id'] == null && json['_id'] != null) {
-      json = {...json, 'id': json['_id']};
-    }
-    return _$TeacherFromJson(json);
-  }
+  factory Teacher.fromJson(Map<String, dynamic> json) =>
+      _$TeacherFromJson(json);
 }

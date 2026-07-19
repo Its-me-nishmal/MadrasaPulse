@@ -20,6 +20,7 @@ AppUser _$AppUserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppUser {
+  @JsonKey(readValue: _readId)
   String get id => throw _privateConstructorUsedError;
   String get madrasaId => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
@@ -44,7 +45,7 @@ abstract class $AppUserCopyWith<$Res> {
       _$AppUserCopyWithImpl<$Res, AppUser>;
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(readValue: _readId) String id,
       String madrasaId,
       String username,
       String role,
@@ -123,7 +124,7 @@ abstract class _$$AppUserImplCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(readValue: _readId) String id,
       String madrasaId,
       String username,
       String role,
@@ -196,7 +197,7 @@ class __$$AppUserImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AppUserImpl implements _AppUser {
   const _$AppUserImpl(
-      {required this.id,
+      {@JsonKey(readValue: _readId) required this.id,
       required this.madrasaId,
       required this.username,
       required this.role,
@@ -209,6 +210,7 @@ class _$AppUserImpl implements _AppUser {
       _$$AppUserImplFromJson(json);
 
   @override
+  @JsonKey(readValue: _readId)
   final String id;
   @override
   final String madrasaId;
@@ -275,7 +277,7 @@ class _$AppUserImpl implements _AppUser {
 
 abstract class _AppUser implements AppUser {
   const factory _AppUser(
-      {required final String id,
+      {@JsonKey(readValue: _readId) required final String id,
       required final String madrasaId,
       required final String username,
       required final String role,
@@ -287,6 +289,7 @@ abstract class _AppUser implements AppUser {
   factory _AppUser.fromJson(Map<String, dynamic> json) = _$AppUserImpl.fromJson;
 
   @override
+  @JsonKey(readValue: _readId)
   String get id;
   @override
   String get madrasaId;

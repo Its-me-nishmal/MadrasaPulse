@@ -836,9 +836,13 @@ Amounts _$AmountsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Amounts {
+  @JsonKey(name: 'Present')
   int get present => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Absent')
   int get absent => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Late')
   int get late => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Excused')
   int get excused => throw _privateConstructorUsedError;
 
   /// Serializes this Amounts to a JSON map.
@@ -855,7 +859,11 @@ abstract class $AmountsCopyWith<$Res> {
   factory $AmountsCopyWith(Amounts value, $Res Function(Amounts) then) =
       _$AmountsCopyWithImpl<$Res, Amounts>;
   @useResult
-  $Res call({int present, int absent, int late, int excused});
+  $Res call(
+      {@JsonKey(name: 'Present') int present,
+      @JsonKey(name: 'Absent') int absent,
+      @JsonKey(name: 'Late') int late,
+      @JsonKey(name: 'Excused') int excused});
 }
 
 /// @nodoc
@@ -906,7 +914,11 @@ abstract class _$$AmountsImplCopyWith<$Res> implements $AmountsCopyWith<$Res> {
       __$$AmountsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int present, int absent, int late, int excused});
+  $Res call(
+      {@JsonKey(name: 'Present') int present,
+      @JsonKey(name: 'Absent') int absent,
+      @JsonKey(name: 'Late') int late,
+      @JsonKey(name: 'Excused') int excused});
 }
 
 /// @nodoc
@@ -952,22 +964,25 @@ class __$$AmountsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AmountsImpl implements _Amounts {
   const _$AmountsImpl(
-      {this.present = 0, this.absent = 0, this.late = 0, this.excused = 0});
+      {@JsonKey(name: 'Present') this.present = 0,
+      @JsonKey(name: 'Absent') this.absent = 0,
+      @JsonKey(name: 'Late') this.late = 0,
+      @JsonKey(name: 'Excused') this.excused = 0});
 
   factory _$AmountsImpl.fromJson(Map<String, dynamic> json) =>
       _$$AmountsImplFromJson(json);
 
   @override
-  @JsonKey()
+  @JsonKey(name: 'Present')
   final int present;
   @override
-  @JsonKey()
+  @JsonKey(name: 'Absent')
   final int absent;
   @override
-  @JsonKey()
+  @JsonKey(name: 'Late')
   final int late;
   @override
-  @JsonKey()
+  @JsonKey(name: 'Excused')
   final int excused;
 
   @override
@@ -1008,20 +1023,24 @@ class _$AmountsImpl implements _Amounts {
 
 abstract class _Amounts implements Amounts {
   const factory _Amounts(
-      {final int present,
-      final int absent,
-      final int late,
-      final int excused}) = _$AmountsImpl;
+      {@JsonKey(name: 'Present') final int present,
+      @JsonKey(name: 'Absent') final int absent,
+      @JsonKey(name: 'Late') final int late,
+      @JsonKey(name: 'Excused') final int excused}) = _$AmountsImpl;
 
   factory _Amounts.fromJson(Map<String, dynamic> json) = _$AmountsImpl.fromJson;
 
   @override
+  @JsonKey(name: 'Present')
   int get present;
   @override
+  @JsonKey(name: 'Absent')
   int get absent;
   @override
+  @JsonKey(name: 'Late')
   int get late;
   @override
+  @JsonKey(name: 'Excused')
   int get excused;
 
   /// Create a copy of Amounts

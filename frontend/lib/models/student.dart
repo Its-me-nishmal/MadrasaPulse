@@ -15,10 +15,12 @@ class Guardian with _$Guardian {
   factory Guardian.fromJson(Map<String, dynamic> json) => _$GuardianFromJson(json);
 }
 
+Object? _readId(Map map, String key) => map['id'] ?? map['_id'];
+
 @freezed
 class Student with _$Student {
   const factory Student({
-    required String id,
+    @JsonKey(readValue: _readId) required String id,
     required String madrasaId,
     required String admissionNo,
     String? rollNo,
@@ -31,10 +33,6 @@ class Student with _$Student {
     @Default('') String formattedName,
   }) = _Student;
 
-  factory Student.fromJson(Map<String, dynamic> json) {
-    if (json['id'] == null && json['_id'] != null) {
-      json = {...json, 'id': json['_id']};
-    }
-    return _$StudentFromJson(json);
-  }
+  factory Student.fromJson(Map<String, dynamic> json) =>
+      _$StudentFromJson(json);
 }

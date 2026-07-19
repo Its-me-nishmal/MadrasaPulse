@@ -133,10 +133,9 @@ class __$$MetaImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MetaImpl extends _Meta {
+class _$MetaImpl implements _Meta {
   const _$MetaImpl(
-      {this.total = 0, this.page = 1, this.limit = 0, this.pages = 0})
-      : super._();
+      {this.total = 0, this.page = 1, this.limit = 0, this.pages = 0});
 
   factory _$MetaImpl.fromJson(Map<String, dynamic> json) =>
       _$$MetaImplFromJson(json);
@@ -190,13 +189,12 @@ class _$MetaImpl extends _Meta {
   }
 }
 
-abstract class _Meta extends Meta {
+abstract class _Meta implements Meta {
   const factory _Meta(
       {final int total,
       final int page,
       final int limit,
       final int pages}) = _$MetaImpl;
-  const _Meta._() : super._();
 
   factory _Meta.fromJson(Map<String, dynamic> json) = _$MetaImpl.fromJson;
 

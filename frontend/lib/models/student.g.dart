@@ -24,7 +24,7 @@ Map<String, dynamic> _$$GuardianImplToJson(_$GuardianImpl instance) =>
 
 _$StudentImpl _$$StudentImplFromJson(Map<String, dynamic> json) =>
     _$StudentImpl(
-      id: json['id'] as String,
+      id: _readId(json, 'id') as String,
       madrasaId: json['madrasaId'] as String,
       admissionNo: json['admissionNo'] as String,
       rollNo: json['rollNo'] as String?,

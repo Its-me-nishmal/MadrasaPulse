@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../controllers/auth_controller.dart';
@@ -24,9 +25,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   Widget build(BuildContext context) {
     ref.listen<AuthStatus>(authControllerProvider, (previous, next) {
       if (next == AuthStatus.authenticated) {
-        Navigator.of(context).pushReplacementNamed('/dashboard');
+        context.go('/dashboard');
       } else if (next == AuthStatus.unauthenticated) {
-        Navigator.of(context).pushReplacementNamed('/login');
+        context.go('/login');
       }
     });
 

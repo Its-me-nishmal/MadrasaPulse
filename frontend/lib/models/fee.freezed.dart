@@ -522,6 +522,7 @@ FeeLedger _$FeeLedgerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FeeLedger {
+  @JsonKey(readValue: _readId)
   String get id => throw _privateConstructorUsedError;
   String get madrasaId => throw _privateConstructorUsedError;
   String get studentId => throw _privateConstructorUsedError;
@@ -544,7 +545,7 @@ abstract class $FeeLedgerCopyWith<$Res> {
       _$FeeLedgerCopyWithImpl<$Res, FeeLedger>;
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(readValue: _readId) String id,
       String madrasaId,
       String studentId,
       String academicYear,
@@ -606,7 +607,7 @@ abstract class _$$FeeLedgerImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(readValue: _readId) String id,
       String madrasaId,
       String studentId,
       String academicYear,
@@ -661,7 +662,7 @@ class __$$FeeLedgerImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$FeeLedgerImpl implements _FeeLedger {
   const _$FeeLedgerImpl(
-      {required this.id,
+      {@JsonKey(readValue: _readId) required this.id,
       required this.madrasaId,
       required this.studentId,
       required this.academicYear,
@@ -672,6 +673,7 @@ class _$FeeLedgerImpl implements _FeeLedger {
       _$$FeeLedgerImplFromJson(json);
 
   @override
+  @JsonKey(readValue: _readId)
   final String id;
   @override
   final String madrasaId;
@@ -731,7 +733,7 @@ class _$FeeLedgerImpl implements _FeeLedger {
 
 abstract class _FeeLedger implements FeeLedger {
   const factory _FeeLedger(
-      {required final String id,
+      {@JsonKey(readValue: _readId) required final String id,
       required final String madrasaId,
       required final String studentId,
       required final String academicYear,
@@ -741,6 +743,7 @@ abstract class _FeeLedger implements FeeLedger {
       _$FeeLedgerImpl.fromJson;
 
   @override
+  @JsonKey(readValue: _readId)
   String get id;
   @override
   String get madrasaId;

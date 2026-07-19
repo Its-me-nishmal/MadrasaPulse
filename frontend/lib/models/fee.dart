@@ -32,20 +32,18 @@ class Invoice with _$Invoice {
       _$InvoiceFromJson(json ?? {});
 }
 
+Object? _readId(Map map, String key) => map['id'] ?? map['_id'];
+
 @freezed
 class FeeLedger with _$FeeLedger {
   const factory FeeLedger({
-    required String id,
+    @JsonKey(readValue: _readId) required String id,
     required String madrasaId,
     required String studentId,
     required String academicYear,
     @Default([]) List<Invoice> invoices,
   }) = _FeeLedger;
 
-  factory FeeLedger.fromJson(Map<String, dynamic>? json) {
-    if (json != null && json['id'] == null && json['_id'] != null) {
-      json = {...json, 'id': json['_id']};
-    }
-    return _$FeeLedgerFromJson(json ?? {});
-  }
+  factory FeeLedger.fromJson(Map<String, dynamic>? json) =>
+      _$FeeLedgerFromJson(json ?? {});
 }

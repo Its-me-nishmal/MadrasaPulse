@@ -230,6 +230,7 @@ Student _$StudentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Student {
+  @JsonKey(readValue: _readId)
   String get id => throw _privateConstructorUsedError;
   String get madrasaId => throw _privateConstructorUsedError;
   String get admissionNo => throw _privateConstructorUsedError;
@@ -257,7 +258,7 @@ abstract class $StudentCopyWith<$Res> {
       _$StudentCopyWithImpl<$Res, Student>;
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(readValue: _readId) String id,
       String madrasaId,
       String admissionNo,
       String? rollNo,
@@ -354,7 +355,7 @@ abstract class _$$StudentImplCopyWith<$Res> implements $StudentCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(readValue: _readId) String id,
       String madrasaId,
       String admissionNo,
       String? rollNo,
@@ -445,7 +446,7 @@ class __$$StudentImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$StudentImpl implements _Student {
   const _$StudentImpl(
-      {required this.id,
+      {@JsonKey(readValue: _readId) required this.id,
       required this.madrasaId,
       required this.admissionNo,
       this.rollNo,
@@ -462,6 +463,7 @@ class _$StudentImpl implements _Student {
       _$$StudentImplFromJson(json);
 
   @override
+  @JsonKey(readValue: _readId)
   final String id;
   @override
   final String madrasaId;
@@ -560,7 +562,7 @@ class _$StudentImpl implements _Student {
 
 abstract class _Student implements Student {
   const factory _Student(
-      {required final String id,
+      {@JsonKey(readValue: _readId) required final String id,
       required final String madrasaId,
       required final String admissionNo,
       final String? rollNo,
@@ -575,6 +577,7 @@ abstract class _Student implements Student {
   factory _Student.fromJson(Map<String, dynamic> json) = _$StudentImpl.fromJson;
 
   @override
+  @JsonKey(readValue: _readId)
   String get id;
   @override
   String get madrasaId;

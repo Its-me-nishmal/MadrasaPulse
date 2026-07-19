@@ -2,10 +2,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user.freezed.dart';
 part 'user.g.dart';
 
+Object? _readId(Map map, String key) => map['id'] ?? map['_id'];
+
 @freezed
 class AppUser with _$AppUser {
   const factory AppUser({
-    required String id,
+    @JsonKey(readValue: _readId) required String id,
     required String madrasaId,
     required String username,
     required String role,
@@ -15,10 +17,6 @@ class AppUser with _$AppUser {
     String? refreshToken,
   }) = _AppUser;
 
-  factory AppUser.fromJson(Map<String, dynamic> json) {
-    if (json['id'] == null && json['_id'] != null) {
-      json = {...json, 'id': json['_id']};
-    }
-    return _$AppUserFromJson(json);
-  }
+  factory AppUser.fromJson(Map<String, dynamic> json) =>
+      _$AppUserFromJson(json);
 }

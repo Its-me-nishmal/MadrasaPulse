@@ -49,7 +49,7 @@ Map<String, dynamic> _$$InvoiceImplToJson(_$InvoiceImpl instance) =>
 
 _$FeeLedgerImpl _$$FeeLedgerImplFromJson(Map<String, dynamic> json) =>
     _$FeeLedgerImpl(
-      id: json['id'] as String,
+      id: _readId(json, 'id') as String,
       madrasaId: json['madrasaId'] as String,
       studentId: json['studentId'] as String,
       academicYear: json['academicYear'] as String,

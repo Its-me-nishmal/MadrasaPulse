@@ -22,7 +22,7 @@ Map<String, dynamic> _$$TeacherAssignmentImplToJson(
 
 _$TeacherImpl _$$TeacherImplFromJson(Map<String, dynamic> json) =>
     _$TeacherImpl(
-      id: json['id'] as String,
+      id: _readId(json, 'id') as String,
       madrasaId: json['madrasaId'] as String,
       staffId: json['staffId'] as String,
       firstName: json['firstName'] as String? ?? '',
