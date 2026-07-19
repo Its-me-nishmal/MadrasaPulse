@@ -17,6 +17,10 @@ app.get('/api/v1/health', (req, res) => {
   });
 });
 
+// Auth Routes registration
+const authRoutes = require('./routes/authRoutes');
+app.use('/api/v1/auth', authRoutes);
+
 // Global Error Handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
