@@ -51,13 +51,13 @@ class AppScaffold extends ConsumerWidget {
         onTap: (index) => _onTab(context, index),
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.dashboard), label: 'Dashboard'),
+              icon: Icon(Icons.dashboard), label: 'Dashboard',),
           BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Students'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Teachers'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.checklist), label: 'Attendance'),
+              icon: Icon(Icons.checklist), label: 'Attendance',),
           BottomNavigationBarItem(
-              icon: Icon(Icons.attach_money), label: 'Fees'),
+              icon: Icon(Icons.attach_money), label: 'Fees',),
           BottomNavigationBarItem(icon: Icon(Icons.school), label: 'Exams'),
         ],
       ),
