@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/network/dio_client.dart';
 import '../../../core/network/dio_provider.dart';
 import '../../../core/router/router_notifier.dart';
+import '../../../core/network/api_config.dart';
 import '../../../models/user.dart';
 
 enum AuthStatus { uninitialized, authenticated, unauthenticated }
@@ -21,7 +22,7 @@ class AuthController extends StateNotifier<AuthStatus> {
     if (storedAccess != null) {
       _dio.setTokens(access: storedAccess);
       try {
-        final response = await _dio.get('/auth/me');
+        final response = await _dio.get(ApiConfig.authMe);
         _currentUser = AppUser.fromJson(response.data['data']);
         state = AuthStatus.authenticated;
         _routerNotifier.login();
@@ -37,7 +38,7 @@ class AuthController extends StateNotifier<AuthStatus> {
       ) async {
     try {
       final response = await _dio.post(
-        '/auth/login',
+        ApiConfig.login,
         data: {
           'madrasaId': madrasaId,
           'username': username,

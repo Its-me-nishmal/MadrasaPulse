@@ -1,4 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/network/dio_client.dart';
+import '../../../core/network/dio_provider.dart';
+import '../../../core/network/api_config.dart';
 
 class DashboardState {
   final int totalStudents;
@@ -37,12 +40,25 @@ class DashboardState {
 }
 
 class DashboardController extends StateNotifier<DashboardState> {
-  DashboardController() : super(const DashboardState());
+  final DioClient _dio;
+  DashboardController(this._dio) : super(const DashboardState());
 
   Future<void> loadDashboard() async {
     state = state.copyWith(isLoading: true, error: null);
     try {
-      state = state.copyWith(isLoading: false);
+      final studentsRes = await _dio.get(ApiConfig.students());
+      final studentsList = studentsRes.data['data'] as List;
+
+      final teachersRes = await _dio.get(ApiConfig.teachers());
+      final teachersList = teachersRes.data['data'] as List;
+
+      state = state.copyWith(
+        totalStudents: studentsList.length,
+        totalTeachers: teachersList.length,
+        todayPresent: studentsList.length, // Placeholder logic
+        totalDue: 150.0, // Placeholder logic
+        isLoading: false,
+      );
     } catch (e) {
       state = state.copyWith(isLoading: false, error: e.toString());
     }
@@ -51,5 +67,6 @@ class DashboardController extends StateNotifier<DashboardState> {
 
 final dashboardControllerProvider =
     StateNotifierProvider<DashboardController, DashboardState>((ref) {
-  return DashboardController();
+  final dio = ref.read(dioClientProvider);
+  return DashboardController(dio);
 });

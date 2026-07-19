@@ -106,8 +106,58 @@ function verifyAlignment() {
   if (hasMismatch) {
     console.error('\n❌ API Alignment Check FAILED. Please align the frontend ApiConfig paths with your backend routes.');
     process.exit(1);
+  }
+
+  console.log('\n✅ Success: All Flutter API endpoints are fully aligned with the Express backend routes!');
+
+  // 4. Verify that each feature in the frontend uses at least one API endpoint
+  console.log('\n🔍 Starting Frontend Features API Usage check...');
+  const featuresDir = path.join(rootDir, 'frontend', 'lib', 'features');
+  
+  if (!fs.existsSync(featuresDir)) {
+    console.error(`❌ Error: features directory not found at ${featuresDir}`);
+    process.exit(1);
+  }
+
+  const features = fs.readdirSync(featuresDir).filter(f => {
+    return fs.statSync(path.join(featuresDir, f)).isDirectory();
+  });
+
+  function scanDirectoryForApiUsage(dir) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      const fullPath = path.join(dir, file);
+      if (fs.statSync(fullPath).isDirectory()) {
+        if (scanDirectoryForApiUsage(fullPath)) {
+          return true;
+        }
+      } else if (file.endsWith('.dart')) {
+        const content = fs.readFileSync(fullPath, 'utf8');
+        if (content.includes('ApiConfig.')) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  let hasUnusedFeature = false;
+  features.forEach(feature => {
+    const featurePath = path.join(featuresDir, feature);
+    const usesApi = scanDirectoryForApiUsage(featurePath);
+    if (!usesApi) {
+      console.error(`❌ Error: Feature '${feature}' does not use any API endpoints! Every feature must connect to at least one API endpoint.`);
+      hasUnusedFeature = true;
+    } else {
+      console.log(`   ✅ Feature '${feature}' verified (uses ApiConfig)`);
+    }
+  });
+
+  if (hasUnusedFeature) {
+    console.error('\n❌ API Usage check FAILED. All frontend features must use at least one API endpoint.');
+    process.exit(1);
   } else {
-    console.log('\n✅ Success: All Flutter API endpoints are fully aligned with the Express backend routes!');
+    console.log('\n✅ Success: All frontend features use at least one API endpoint!');
     process.exit(0);
   }
 }
